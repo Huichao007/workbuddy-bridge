@@ -37,10 +37,20 @@ jobs:
           # On this runner there is no WorkBuddy install, which is exactly the
           # first thing a new user with a broken setup will hit. The error must
           # name the fix, not dump a stack trace.
-          $out = python bridge.py 2>&1 | Out-String
+          #
+          # Actions runs pwsh with $ErrorActionPreference = 'Stop', so a native
+          # command writing to stderr becomes a terminating error before the
+          # assertions below can run. Relax it for this probe only.
+          $ErrorActionPreference = 'Continue'
+          $out = & python bridge.py 2>&1 | Out-String
+          $code = $LASTEXITCODE
           $out | Write-Host
+          if ($code -eq 0) { throw 'bridge.py started without a WorkBuddy install' }
           if ($out -notmatch 'WBIPC client library not found') {
             throw 'bridge.py did not explain the missing desktop app'
+          }
+          if ($out -notmatch 'WORKBUDDY_HOME') {
+            throw 'bridge.py did not tell the user how to point at the install'
           }
           if ($out -match 'Traceback') {
             throw 'bridge.py crashed with a traceback instead of a message'
@@ -49,9 +59,11 @@ jobs:
       - name: doctor.py explains what is missing
         shell: pwsh
         run: |
-          $out = python doctor.py 2>&1 | Out-String
+          $ErrorActionPreference = 'Continue'
+          $out = & python doctor.py 2>&1 | Out-String
+          $code = $LASTEXITCODE
           $out | Write-Host
-          if ($LASTEXITCODE -eq 0) { throw 'doctor.py passed without WorkBuddy installed' }
+          if ($code -eq 0) { throw 'doctor.py passed without WorkBuddy installed' }
           if ($out -notmatch 'WORKBUDDY_HOME') {
             throw 'doctor.py did not tell the user how to point at the install'
           }

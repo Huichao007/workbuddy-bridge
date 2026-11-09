@@ -58,8 +58,25 @@ WB_HOME = wbpaths.find_home()
 WB_LIB = wbpaths.ipc_lib_dir(WB_HOME)
 
 if not WB_LIB:
-    print("FATAL: WBIPC client library not found.\n" + wbpaths.desktop_install_hint(),
-          file=sys.stderr)
+    # Two different failures share this exit path and they need different fixes:
+    # no install at all, versus an install whose bundled IPC client is missing
+    # (a trimmed or half-finished install). Telling a user who *does* have the
+    # app installed to "install the app" wastes their time.
+    _installs = wbpaths.find_installs()
+    if _installs:
+        print("FATAL: the WorkBuddy install was found but its built-in IPC client "
+              "is missing.\n"
+              "  Found: %s\n"
+              "  Expected under: <install>/%s/workbuddy_ipc\n"
+              "  This usually means the install is incomplete or was trimmed by an\n"
+              "  updater. Reinstall the WorkBuddy desktop app, then run again.\n"
+              "  If the library lives somewhere else, point WORKBUDDY_HOME at the\n"
+              "  folder that contains WorkBuddy.exe."
+              % (", ".join(_installs), wbpaths.IPC_LIB_REL),
+              file=sys.stderr)
+    else:
+        print("FATAL: WBIPC client library not found.\n"
+              + wbpaths.desktop_install_hint(), file=sys.stderr)
     sys.exit(1)
 
 if WB_LIB not in sys.path:
