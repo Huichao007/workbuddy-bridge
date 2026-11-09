@@ -38,7 +38,7 @@ jobs:
       - name: byte-compile every module
         run: |
           python -m py_compile bridge.py translate.py responses_api.py wbpaths.py instance.py
-          python -m py_compile setup.py doctor.py
+          python -m py_compile setup.py doctor.py smoke.py
           python -m py_compile tools/sync-opencode.py
           python -m py_compile clients/cursor-point-to-bridge.py
           python -m py_compile tests/test_translate.py
@@ -99,15 +99,16 @@ jobs:
       - name: discoverability guard
         shell: pwsh
         run: |
-          # The README is the product page. These four facts are what make a
-          # visitor decide to install; losing any of them silently kills the
-          # project's only conversion path.
+          # The README is the product page. These facts are what make a visitor
+          # decide to install; losing any of them silently kills the project's
+          # only conversion path.
           $readme = Get-Content README.md -Raw
           $required = @{
             'OpenCode is named'          = 'OpenCode'
             'Codex is named'             = 'Codex'
             'one-command install'        = 'python setup.py'
             'a real command to run'      = 'opencode run -m'
+            'a live verification step'   = 'python smoke.py'
           }
           $missing = @()
           foreach ($k in $required.Keys) {
@@ -115,7 +116,7 @@ jobs:
           }
           if (Test-Path README.en.md) {
             $en = Get-Content README.en.md -Raw
-            foreach ($t in @('OpenCode', 'Codex', 'python setup.py')) {
+            foreach ($t in @('OpenCode', 'Codex', 'python setup.py', 'python smoke.py')) {
               if ($en -notmatch [regex]::Escape($t)) { $missing += "EN: $t" }
             }
           }

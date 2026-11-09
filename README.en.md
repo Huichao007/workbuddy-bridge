@@ -72,11 +72,24 @@ It ends with a table like:
 ## Prove it works in 30 seconds
 
 ```powershell
-python doctor.py            # every line PASS, last line ALL GOOD
+python doctor.py            # wiring self-check, last line ALL GOOD
+python smoke.py             # one real request on both protocols
 ```
 
-Then send one real request with a model id you actually have (**do not copy the ids
-below — WorkBuddy rotates them**):
+`doctor.py` answers "is everything wired up". `smoke.py` answers the blunter
+question: **"can I get an answer right now"**. It picks the cheapest model on
+your account and hits `/v1/chat/completions` (the OpenCode path) and
+`/v1/responses` (the Codex path), printing latency and token count:
+
+```
+  [ok] default chat/hy4free  2.1s, 'OK', 86 tokens
+  [ok] default responses/hy4free  2.4s, 'OK'
+
+SMOKE OK - both protocols answered with a real model call
+```
+
+Then confirm with the real clients, using a model id you actually have
+(**do not copy the ids below — WorkBuddy rotates them**):
 
 ```powershell
 curl.exe http://127.0.0.1:18490/v1/models       # what you have right now
@@ -208,6 +221,7 @@ More in [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
 ```
 setup.py            one-command deploy: discover -> start -> wire clients -> autostart
 doctor.py           preflight; run it first when something breaks
+smoke.py            live end-to-end check: one real call on both protocols
 bridge.py           the OpenAI-compatible server
 translate.py        SSE chunk aggregation and tool-call merging (pure, unit-tested)
 instance.py         --instance / --port / --config-dir resolution

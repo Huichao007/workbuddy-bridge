@@ -941,9 +941,10 @@ def cmd_setup(args):
             % (name, spec.get("provider"), int(spec["port"]), models, state))
     say("=" * 66)
     say("")
-    say("Verify:")
+    say("Next (copy-paste):")
     first = table[sorted(table)[0]]
-    say("  python doctor.py")
+    say("  python smoke.py            # one real call on both protocols")
+    say("")
     say("  opencode run -m %s/<model> \"hello\"" % first["provider"])
     say("  $env:WORKBUDDY_API_KEY = \"wb-bridge-local\"")
     say("  codex -c model_provider=%s -c model=<model> exec \"hello\""

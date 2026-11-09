@@ -69,20 +69,32 @@ python setup.py
 ## 30 秒验证它真的通了
 
 ```powershell
-python doctor.py                       # 逐项自检，最后一行 ALL GOOD 就是全通
+python doctor.py                       # 接线自检，最后一行 ALL GOOD 就是全通
+python smoke.py                        # 真发一次请求，两种协议都验
 ```
 
-然后挑一个你已经有的模型 id 真发一句话（**别照抄下面的 id，WorkBuddy 会换**）：
+`doctor.py` 回答的是「线接好了吗」，`smoke.py` 回答的是另一件更直接的事：
+**「现在能拿到回答吗」**。它会自动挑一个倍率最低的模型，分别打
+`/v1/chat/completions`（OpenCode 用）和 `/v1/responses`（Codex 用），
+打印耗时和 token 数。实测输出：
+
+```
+  [ok] default chat/hy4free  2.1s, 'OK', 86 tokens
+  [ok] default responses/hy4free  2.4s, 'OK'
+
+SMOKE OK - both protocols answered with a real model call
+```
+
+想用真实客户端再确认一次，挑一个你已经有的模型 id（**别照抄下面的 id，WorkBuddy 会换**）：
 
 ```powershell
-# 先看你现在有哪些模型
-curl.exe http://127.0.0.1:18490/v1/models
+curl.exe http://127.0.0.1:18490/v1/models       # 你现在有哪些模型
 
 # OpenCode
 opencode run -m workbuddy/<model-id> "说三个字"
 
 # Codex
-$env:WORKBUDDY_API_KEY = "wb-bridge-local"     # 占位，桥接不校验
+$env:WORKBUDDY_API_KEY = "wb-bridge-local"      # 占位，桥接不校验
 codex -c model_provider=workbuddy -c model=<model-id> exec "说三个字"
 ```
 
@@ -316,6 +328,7 @@ print(client.chat.completions.create(
 workbuddy-bridge/
 ├─ setup.py                      # 一键部署：发现 → 起服务 → 写客户端配置 → 装自启
 ├─ doctor.py                     # 自检，先跑这个
+├─ smoke.py                      # 真发一次请求，两种协议都验（会消耗少量积分）
 ├─ bridge.py                     # 核心：OpenAI 兼容 HTTP 服务 + WBIPC 上行
 ├─ translate.py                  # SSE 聚合 / 工具调用合并（纯函数，可单测）
 ├─ instance.py                   # --instance / --port / --config-dir 解析
