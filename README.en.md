@@ -1,5 +1,10 @@
 # WorkBuddy Bridge
 
+[![ci](https://github.com/Huichao007/workbuddy-bridge/actions/workflows/ci.yml/badge.svg)](https://github.com/Huichao007/workbuddy-bridge/actions/workflows/ci.yml)
+[![release](https://img.shields.io/github/v/release/Huichao007/workbuddy-bridge)](https://github.com/Huichao007/workbuddy-bridge/releases)
+[![license](https://img.shields.io/github/license/Huichao007/workbuddy-bridge)](LICENSE)
+![platform](https://img.shields.io/badge/platform-Windows%2010%2F11-0078d4)
+
 **Install once and your OpenCode and Codex CLI can use WorkBuddy's models and credits
 immediately — no API key required.**
 

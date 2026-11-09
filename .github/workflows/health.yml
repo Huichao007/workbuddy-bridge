@@ -1,0 +1,92 @@
+name: health
+
+# Twice a day, prove the shipped code still starts and still translates
+# correctly. This runs the same unit tests as ci, but on a schedule, so a
+# dependencyless project with no runtime telemetry still notices when the
+# interpreter or the OS image moves underneath it.
+
+on:
+  schedule:
+    - cron: "17 1,13 * * *" # 09:17 and 21:17 Beijing time
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  probe:
+    name: scheduled protocol probe
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: modules import without a WorkBuddy install
+        run: python -c "import translate, responses_api, wbpaths, instance; print('ok')"
+
+      - name: a bridge with no desktop app fails politely, not with a traceback
+        shell: pwsh
+        run: |
+          # On this runner there is no WorkBuddy install, which is exactly the
+          # first thing a new user with a broken setup will hit. The error must
+          # name the fix, not dump a stack trace.
+          $out = python bridge.py 2>&1 | Out-String
+          $out | Write-Host
+          if ($out -notmatch 'WBIPC client library not found') {
+            throw 'bridge.py did not explain the missing desktop app'
+          }
+          if ($out -match 'Traceback') {
+            throw 'bridge.py crashed with a traceback instead of a message'
+          }
+
+      - name: doctor.py explains what is missing
+        shell: pwsh
+        run: |
+          $out = python doctor.py 2>&1 | Out-String
+          $out | Write-Host
+          if ($LASTEXITCODE -eq 0) { throw 'doctor.py passed without WorkBuddy installed' }
+          if ($out -notmatch 'WORKBUDDY_HOME') {
+            throw 'doctor.py did not tell the user how to point at the install'
+          }
+
+  report:
+    name: open an issue when the probe fails
+    needs: probe
+    if: failure()
+    runs-on: windows-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const title = 'scheduled health probe failed';
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const list = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'health',
+            });
+            const existing = list.data.find(i => i.title === title);
+            const body = [
+              'The twice-daily probe failed. Something that used to work does not anymore.',
+              '',
+              `Run: ${runUrl}`,
+              '',
+              'This issue is updated in place rather than reopened for every failure.',
+            ].join('\n');
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: existing.number, body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title, body, labels: ['health'],
+              });
+            }

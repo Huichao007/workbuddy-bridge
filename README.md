@@ -1,5 +1,10 @@
 # WorkBuddy Bridge
 
+[![ci](https://github.com/Huichao007/workbuddy-bridge/actions/workflows/ci.yml/badge.svg)](https://github.com/Huichao007/workbuddy-bridge/actions/workflows/ci.yml)
+[![release](https://img.shields.io/github/v/release/Huichao007/workbuddy-bridge)](https://github.com/Huichao007/workbuddy-bridge/releases)
+[![license](https://img.shields.io/github/license/Huichao007/workbuddy-bridge)](LICENSE)
+![platform](https://img.shields.io/badge/platform-Windows%2010%2F11-0078d4)
+
 **装完之后，你的 OpenCode 和 Codex CLI 就能直接用 WorkBuddy 的模型和积分 —— 不需要 API key。**
 
 一条命令装好，两个客户端同时可用。国内版、国际版的积分还能**同时**接入，各走各的端口。
