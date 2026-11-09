@@ -55,6 +55,10 @@ jobs:
           if ($out -match 'Traceback') {
             throw 'bridge.py crashed with a traceback instead of a message'
           }
+          # GitHub appends `exit $LASTEXITCODE` to pwsh steps, and bridge.py
+          # deliberately exits 1 here. Every assertion above passed, so clear it
+          # explicitly or the step reports failure for doing the right thing.
+          exit 0
 
       - name: doctor.py explains what is missing
         shell: pwsh
@@ -67,6 +71,7 @@ jobs:
           if ($out -notmatch 'WORKBUDDY_HOME') {
             throw 'doctor.py did not tell the user how to point at the install'
           }
+          exit 0
 
   report:
     name: open an issue when the probe fails
