@@ -19,6 +19,9 @@ dumps/
 dumps-*/
 *.log
 
+# --- operator reports (local only; they contain absolute paths) ---------------
+ops/reports/
+
 # --- per-user client state ----------------------------------------------------
 .clients-bak/
 clients/.cursor-state-backup/
