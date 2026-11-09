@@ -1,0 +1,14 @@
+{
+  "$schema": "https://opencode.ai/schemas/config.json",
+  "_comment": "Merge the providers.workbuddy block into your own opencode.json. On OpenCode v2 the provider is declared with package + settings; on v1 use options.baseURL instead. Then run: tools/sync-opencode.py --apply",
+  "providers": {
+    "workbuddy": {
+      "name": "WorkBuddy (积分)",
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "baseURL": "http://127.0.0.1:18490/v1"
+      },
+      "models": {}
+    }
+  }
+}

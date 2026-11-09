@@ -1,0 +1,42 @@
+name: Model id changed / list is stale
+description: WorkBuddy shipped a new lineup and the bridge needs to follow
+labels: [model-list]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        WorkBuddy changes its lineup server-side. The bridge reads the list from the
+        desktop app at startup, so a stale list usually means just restarting the bridge.
+        If it is still wrong after a restart, this is the right place.
+
+  - type: textarea
+    id: models
+    attributes:
+      label: Output of `curl http://127.0.0.1:18490/v1/models`
+      description: The `id` of each model is enough; trim the rest if it is long.
+      render: json
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What the WorkBuddy desktop picker shows
+      description: Screenshot or plain list. This is the source of truth we need to match.
+    validations:
+      required: true
+
+  - type: input
+    id: wb
+    attributes:
+      label: WorkBuddy desktop version
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: restart
+    attributes:
+      label: Tried restarting the bridge?
+      options:
+        - label: Yes, restarted bridge.py and the list is still wrong
+          required: true

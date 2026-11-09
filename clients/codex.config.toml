@@ -1,0 +1,21 @@
+# Codex CLI -> local WorkBuddy bridge.
+#
+# Merge into %CODEX_HOME%\config.toml (usually ~/.codex/config.toml).
+# Codex >= 0.4x only speaks the Responses API, so wire_api must be "responses";
+# the bridge exposes /v1/responses and translates to Chat Completions.
+#
+# The api key is a placeholder: the bridge authenticates through the WorkBuddy
+# desktop app, not through a bearer token. env_key must still name a variable
+# that exists, otherwise Codex refuses to start.
+
+[model_providers.workbuddy]
+name = "WorkBuddy (local bridge)"
+base_url = "http://127.0.0.1:18490/v1"
+wire_api = "responses"
+env_key = "WORKBUDDY_API_KEY"
+
+# Optional: make WorkBuddy the default for `codex` with no flags.
+# Replace the model id with one your subscription actually has
+# (GET http://127.0.0.1:18490/v1/models lists them all).
+# model = "glm-5.3"
+# model_provider = "workbuddy"

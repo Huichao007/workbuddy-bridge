@@ -1,0 +1,79 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  compile:
+    name: syntax + hygiene
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: byte-compile every module
+        run: |
+          python -m py_compile bridge.py responses_api.py wbpaths.py instance.py
+          python -m py_compile setup.py doctor.py
+          python -m py_compile tools/sync-opencode.py
+          python -m py_compile clients/cursor-point-to-bridge.py
+
+      - name: import the discovery modules
+        run: python -c "import wbpaths, instance; print('ok')"
+
+      - name: setup.py --help renders
+        run: python setup.py --help
+
+      - name: no syntax errors in PowerShell scripts
+        shell: pwsh
+        run: |
+          $bad = 0
+          Get-ChildItem scripts -Filter *.ps1 | ForEach-Object {
+            $text = Get-Content $_.FullName -Raw
+            $errors = $null
+            [System.Management.Automation.Language.Parser]::ParseInput(
+              $text, [ref]$null, [ref]$errors) | Out-Null
+            if ($errors.Count -gt 0) {
+              Write-Host "PARSE ERROR in $($_.Name):"
+              $errors | ForEach-Object { Write-Host "  $($_.Message)" }
+              $bad = 1
+            } else {
+              Write-Host "ok $($_.Name)"
+            }
+          }
+          if ($bad) { exit 1 }
+
+      - name: no secrets committed
+        shell: pwsh
+        run: |
+          $hits = Get-ChildItem -Recurse -File -Include *.py,*.json,*.toml,*.md,*.ps1,*.cmd |
+            Select-String -Pattern 'sk-[A-Za-z0-9]{20,}', 'Bearer\s+[A-Za-z0-9_\-\.]{30,}',
+                                 'gho_[A-Za-z0-9]{20,}'
+          if ($hits) { $hits | Format-Table; exit 1 } else { 'clean' }
+
+      - name: machine-specific files are not committed
+        shell: pwsh
+        run: |
+          foreach ($f in @('relay-models.json', 'instances.json')) {
+            if (Test-Path $f) { throw "$f must stay git-ignored" }
+          }
+          'ok'
+
+      - name: json files parse
+        shell: pwsh
+        run: |
+          Get-ChildItem -Recurse -File -Include *.json |
+            Where-Object { $_.FullName -notmatch 'node_modules' } |
+            ForEach-Object {
+              try { Get-Content $_.FullName -Raw | ConvertFrom-Json | Out-Null }
+              catch { throw "invalid JSON: $($_.FullName)" }
+            }
+          'ok'

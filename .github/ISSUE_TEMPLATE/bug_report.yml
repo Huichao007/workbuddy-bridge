@@ -1,0 +1,66 @@
+name: Bug report
+description: Something does not work - start here
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing: run `python doctor.py` and read
+        [docs/TROUBLESHOOTING.md](https://github.com/Huichao007/workbuddy-bridge/blob/main/docs/TROUBLESHOOTING.md).
+        "No token streaming" and "~640 KiB response cap" are documented design limits,
+        not bugs (see docs/LIMITATIONS.md).
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, what you got. Paste the exact error text.
+    validations:
+      required: true
+
+  - type: textarea
+    id: doctor
+    attributes:
+      label: doctor.py output
+      description: Full output of `python doctor.py` (it contains no secrets).
+      render: text
+    validations:
+      required: true
+
+  - type: input
+    id: wb
+    attributes:
+      label: WorkBuddy desktop version
+      placeholder: e.g. 0.9.x
+    validations:
+      required: true
+
+  - type: input
+    id: env
+    attributes:
+      label: Windows + Python version
+      placeholder: e.g. Windows 11 23H2, Python 3.13.7
+    validations:
+      required: true
+
+  - type: dropdown
+    id: client
+    attributes:
+      label: Which client
+      options:
+        - OpenCode
+        - Codex CLI
+        - Cursor
+        - curl / OpenAI SDK
+        - bridge itself (startup or /health)
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: bridge.log (last 50 lines)
+      description: |
+        Do NOT paste API keys, cookies, or full conversations.
+        If you set WB_BRIDGE_DUMP=err, list the dumps\ filenames instead of their contents.
+      render: text

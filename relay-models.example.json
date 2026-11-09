@@ -1,0 +1,13 @@
+{
+  "_comment": "Copy to relay-models.json (git-ignored) if you have a second OpenAI-compatible provider you want to expose through the same bridge. bridge.py resolves the key from key_file at request time, so a rotated key is picked up without a restart. Delete this file if you only use WorkBuddy.",
+  "models": {
+    "example-model": {
+      "base_url": "https://your-relay.example.com/v1",
+      "upstream_model": "the-model-name-that-relay-expects",
+      "key_file": "~/secrets/example-relay.key",
+      "display": "Example model (0.00x)",
+      "context": 200000,
+      "output": 64000
+    }
+  }
+}
