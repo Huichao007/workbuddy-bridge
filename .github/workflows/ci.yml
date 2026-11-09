@@ -4,13 +4,16 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
 
 jobs:
-  compile:
-    name: syntax + hygiene
-    runs-on: windows-latest
+  test:
+    name: protocol tests (py${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
+        os: [windows-latest]
         python-version: ["3.9", "3.13"]
     steps:
       - uses: actions/checkout@v4
@@ -19,15 +22,30 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: protocol and translation unit tests
+        run: python -m unittest discover -s tests -v
+
+  compile:
+    name: syntax + hygiene
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
       - name: byte-compile every module
         run: |
-          python -m py_compile bridge.py responses_api.py wbpaths.py instance.py
+          python -m py_compile bridge.py translate.py responses_api.py wbpaths.py instance.py
           python -m py_compile setup.py doctor.py
           python -m py_compile tools/sync-opencode.py
           python -m py_compile clients/cursor-point-to-bridge.py
+          python -m py_compile tests/test_translate.py
 
-      - name: import the discovery modules
-        run: python -c "import wbpaths, instance; print('ok')"
+      - name: importable without a WorkBuddy install
+        run: |
+          python -c "import translate, responses_api, wbpaths, instance; print('ok')"
 
       - name: setup.py --help renders
         run: python setup.py --help
@@ -77,3 +95,29 @@ jobs:
               catch { throw "invalid JSON: $($_.FullName)" }
             }
           'ok'
+
+      - name: discoverability guard
+        shell: pwsh
+        run: |
+          # The README is the product page. These four facts are what make a
+          # visitor decide to install; losing any of them silently kills the
+          # project's only conversion path.
+          $readme = Get-Content README.md -Raw
+          $required = @{
+            'OpenCode is named'          = 'OpenCode'
+            'Codex is named'             = 'Codex'
+            'one-command install'        = 'python setup.py'
+            'a real command to run'      = 'opencode run -m'
+          }
+          $missing = @()
+          foreach ($k in $required.Keys) {
+            if ($readme -notmatch [regex]::Escape($required[$k])) { $missing += $k }
+          }
+          if (Test-Path README.en.md) {
+            $en = Get-Content README.en.md -Raw
+            foreach ($t in @('OpenCode', 'Codex', 'python setup.py')) {
+              if ($en -notmatch [regex]::Escape($t)) { $missing += "EN: $t" }
+            }
+          }
+          if ($missing) { throw "README lost: $($missing -join ', ')" }
+          'readme keeps its install story'

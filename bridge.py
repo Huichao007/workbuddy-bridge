@@ -50,6 +50,7 @@ import instance
 INSTANCE = instance.apply()
 
 import responses_api
+import translate
 import wbpaths
 
 # --- WorkBuddy WBIPC (official stdlib client shipped with the desktop app) ---
@@ -542,86 +543,22 @@ def upstream_chat(payload):
         except Exception:
             return status, {"error": {"message": text[:500]}}
 
-    frames = []
-    for line in text.split("\n"):
-        line = line.strip()
-        if not line.startswith("data:"):
-            continue
-        data = line[5:].strip()
-        if not data or data == "[DONE]":
-            continue
-        try:
-            frames.append(json.loads(data))
-        except Exception:
-            continue
+    frames = translate.parse_sse(text)
     if not frames:
         return 502, {"error": {"message": "empty upstream response"}}
+    if translate.has_stream_noise(text):
+        log("upstream SSE had unparseable frames (%d chars)" % len(text))
     return 200, frames
 
 
 def sse_text(frames):
-    out = []
-    for f in frames:
-        out.append("data: " + json.dumps(f, ensure_ascii=False) + "\n\n")
-    out.append("data: [DONE]\n\n")
-    return "".join(out)
+    """Kept as a thin alias so existing callers and tests stay valid."""
+    return translate.sse_text(frames)
 
 
 def aggregate(frames):
-    """Collapse streamed chunks into a single non-streaming response."""
-    merged = {"id": None, "object": "chat.completion", "created": None,
-              "model": None, "choices": [], "usage": None}
-    tools = {}
-
-    for f in frames:
-        for k in ("id", "created", "model"):
-            if f.get(k) is not None:
-                merged[k] = f[k]
-        if f.get("usage"):
-            merged["usage"] = f["usage"]
-        for ch in f.get("choices") or []:
-            idx = ch.get("index") or 0
-            while len(merged["choices"]) <= idx:
-                merged["choices"].append(
-                    {"index": idx, "message": {"role": "assistant", "content": ""},
-                     "finish_reason": None})
-            mc = merged["choices"][idx]["message"]
-            d = ch.get("delta") or {}
-            if d.get("role"):
-                mc["role"] = d["role"]
-            if d.get("content"):
-                mc["content"] = (mc.get("content") or "") + d["content"]
-            for tc in d.get("tool_calls") or []:
-                pos = tc.get("index") or 0
-                slot = tools.setdefault((idx, pos), {
-                    "index": pos, "id": None, "type": "function",
-                    "function": {"name": "", "arguments": ""}})
-                if tc.get("id"):
-                    slot["id"] = tc["id"]
-                fn = tc.get("function") or {}
-                if fn.get("name"):
-                    slot["function"]["name"] += fn["name"]
-                if fn.get("arguments"):
-                    slot["function"]["arguments"] += fn["arguments"]
-            if ch.get("finish_reason"):
-                merged["choices"][idx]["finish_reason"] = ch["finish_reason"]
-
-    for (idx, _pos), slot in tools.items():
-        merged["choices"][idx].setdefault("message", {})["tool_calls"] = []
-    # attach tool calls in order
-    for (idx, pos), slot in sorted(tools.items()):
-        mc = merged["choices"][idx]["message"]
-        mc.setdefault("tool_calls", []).append(
-            {k: slot[k] for k in ("index", "id", "type", "function")})
-        if not slot["id"]:
-            slot["id"] = "call_%d" % pos
-        if not mc.get("content"):
-            mc["content"] = mc.get("content") or None
-
-    if merged["usage"] is None:
-        merged["usage"] = {"prompt_tokens": 0, "completion_tokens": 0,
-                           "total_tokens": 0}
-    return merged
+    """Kept as a thin alias so existing callers and tests stay valid."""
+    return translate.aggregate(frames)
 
 
 # --- external relay bypass ----------------------------------------------------

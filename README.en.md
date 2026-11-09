@@ -1,13 +1,45 @@
 # WorkBuddy Bridge
 
-**Turn your WorkBuddy subscription's credits into an OpenAI-compatible endpoint for
-OpenCode, Codex CLI and Cursor — with the domestic and the international edition running
-at the same time, each on its own port.**
+**Install once and your OpenCode and Codex CLI can use WorkBuddy's models and credits
+immediately — no API key required.**
+
+One command installs it and both clients work afterwards. The domestic and the
+international edition can also run at the same time, each on its own port.
+
+> Windows only — it depends on the app's Windows named pipe.
+
+## What you get
+
+| You get                                     | How you use it                                                                       |
+| ------------------------------------------- | ------------------------------------------------------------------------------------ |
+| **A WorkBuddy model group inside OpenCode** | the picker shows `WorkBuddy` groups with every model and its credit multiplier       |
+| **A `workbuddy` provider in Codex CLI**     | `codex -c model_provider=workbuddy -c model=... exec "..."`                          |
+| **Your existing config untouched**          | providers are only _added_; other providers and your default model stay as they were |
+| **Self-healing**                            | logon autostart + 10-minute keepalive; the desktop app is relaunched on demand       |
+
+Both of these work right after install. They are captured from a real run, not
+illustrations:
+
+```powershell
+PS> opencode run -m workbuddy/deepseek-v4.1-flash "answer: OpenCode connected"
+> build · deepseek-v4.1-flash
+OpenCode 已连通
+
+PS> codex -c model_provider=workbuddy -c model=deepseek-v4.1-flash exec "answer: Codex connected"
+codex
+Codex 已连通。
+tokens used
+14,891
+```
 
 No API key, no third-party relay, no token ever leaves your machine: requests ride the
 named pipe the WorkBuddy desktop app already opened.
 
-> Windows only — it depends on the app's Windows named pipe.
+```
+OpenCode  ─┐                        ┌─► bridge(cn)   127.0.0.1:18490 ─┐
+Codex CLI ─┼─► one /v1 protocol ────┤                                  ├─► each edition's
+Cursor    ─┘                        └─► bridge(intl) 127.0.0.1:18491 ─┘      signed-in session
+```
 
 ## Quick start (3 commands)
 
@@ -37,21 +69,26 @@ It ends with a table like:
   intl   workbuddy-intl http://127.0.0.1:18491/v1   18 models   [started]
 ```
 
-Then:
+## Prove it works in 30 seconds
 
 ```powershell
-python doctor.py
-opencode run -m workbuddy/deepseek-v4.1-flash "say three words"
+python doctor.py            # every line PASS, last line ALL GOOD
 ```
 
-| Command                               | What it does                                            |
-| ------------------------------------- | ------------------------------------------------------- |
-| `python setup.py status`              | show every instance and whether it is alive             |
-| `python setup.py stop`                | stop the bridges setup started                          |
-| `python setup.py uninstall`           | stop + remove the autostart tasks (client configs stay) |
-| `python setup.py --dry-run`           | discover and report only                                |
-| `python setup.py --ports 18500,18501` | pick ports by hand                                      |
-| `python setup.py --clients none`      | start bridges only                                      |
+Then send one real request with a model id you actually have (**do not copy the ids
+below — WorkBuddy rotates them**):
+
+```powershell
+curl.exe http://127.0.0.1:18490/v1/models       # what you have right now
+
+opencode run -m workbuddy/<model-id> "say three words"
+
+$env:WORKBUDDY_API_KEY = "wb-bridge-local"      # placeholder, never checked
+codex -c model_provider=workbuddy -c model=<model-id> exec "say three words"
+```
+
+If both answer, you are done. Re-running `setup.py` is safe: it will not add ports or
+move a provider that is already working.
 
 ## Domestic + international at the same time
 
@@ -172,12 +209,14 @@ More in [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
 setup.py            one-command deploy: discover -> start -> wire clients -> autostart
 doctor.py           preflight; run it first when something breaks
 bridge.py           the OpenAI-compatible server
+translate.py        SSE chunk aggregation and tool-call merging (pure, unit-tested)
 instance.py         --instance / --port / --config-dir resolution
 responses_api.py    Responses <-> Chat Completions translation (Codex)
 wbpaths.py          install/config discovery (multiple installs supported)
 scripts/            start-bridge.ps1, watchdog.cmd, install-task.ps1
 tools/              sync-opencode.py
 clients/            opencode.json, codex.config.toml, cursor-point-to-bridge.py
+tests/              protocol unit tests, run by CI without WorkBuddy installed
 docs/               ARCHITECTURE, CLIENTS, TROUBLESHOOTING, LIMITATIONS
 ```
 

@@ -1,16 +1,42 @@
 # WorkBuddy Bridge
 
-**把 WorkBuddy 订阅的积分，变成 OpenCode / Codex CLI / Cursor 都能直接调用的 OpenAI 兼容接口。**
-国内版、国际版可以**同时**接入，两个积分池各走各的端口，互不干扰。
+**装完之后，你的 OpenCode 和 Codex CLI 就能直接用 WorkBuddy 的模型和积分 —— 不需要 API key。**
 
-不需要 API key，不需要第三方中转，不上传任何 token —— 请求走你自己电脑上 WorkBuddy 桌面端
-已经建立的命名管道。
+一条命令装好，两个客户端同时可用。国内版、国际版的积分还能**同时**接入，各走各的端口。
+
+---
+
+## 装上就有的东西
+
+| 你会得到                                | 怎么用                                                          |
+| --------------------------------------- | --------------------------------------------------------------- |
+| **OpenCode 里多一组模型**               | 模型选择器出现 `WorkBuddy 国内版` 分组，22 个模型带积分倍率     |
+| **Codex CLI 能跑 `workbuddy` provider** | `codex -c model_provider=workbuddy -c model=... exec "..."`     |
+| **原有配置不被动**                      | 只往你的配置里**加** provider，其它 provider 和默认模型原样保留 |
+| **掉线自愈**                            | 登录自启 + 每 10 分钟保活，桌面端掉了会按需拉起                 |
+
+装完之后，下面这两条命令**立刻就能跑**（这是本项目实测输出，不是示意）：
+
+```powershell
+PS> opencode run -m workbuddy/deepseek-v4.1-flash "回答：OpenCode 已连通，只输出这一句"
+> build · deepseek-v4.1-flash
+OpenCode 已连通
+
+PS> codex -c model_provider=workbuddy -c model=deepseek-v4.1-flash exec "回答：Codex 已连通，只输出这一句"
+codex
+Codex 已连通。
+tokens used
+14,891
+```
 
 ```
 OpenCode  ─┐                        ┌─► bridge(cn)   127.0.0.1:18490 ─┐
 Codex CLI ─┼─► 同一个 /v1 协议 ─────┤                                  ├─► 各版本桌面端登录态
 Cursor    ─┘                        └─► bridge(intl) 127.0.0.1:18491 ─┘      （扣对应积分）
 ```
+
+不需要 API key，不需要第三方中转，不上传任何 token —— 请求走你自己电脑上 WorkBuddy 桌面端
+已经建立的命名管道。
 
 ---
 
@@ -40,12 +66,27 @@ python setup.py
   intl   workbuddy-intl http://127.0.0.1:18491/v1   18 models   [started]
 ```
 
-然后验证：
+## 30 秒验证它真的通了
 
 ```powershell
-python doctor.py                                  # 逐项自检，FAIL 就修 FAIL
-opencode run -m workbuddy/deepseek-v4.1-flash "说三个字"
+python doctor.py                       # 逐项自检，最后一行 ALL GOOD 就是全通
 ```
+
+然后挑一个你已经有的模型 id 真发一句话（**别照抄下面的 id，WorkBuddy 会换**）：
+
+```powershell
+# 先看你现在有哪些模型
+curl.exe http://127.0.0.1:18490/v1/models
+
+# OpenCode
+opencode run -m workbuddy/<model-id> "说三个字"
+
+# Codex
+$env:WORKBUDDY_API_KEY = "wb-bridge-local"     # 占位，桥接不校验
+codex -c model_provider=workbuddy -c model=<model-id> exec "说三个字"
+```
+
+两个都能回话，就是装好了。
 
 其他常用命令：
 
@@ -57,6 +98,8 @@ opencode run -m workbuddy/deepseek-v4.1-flash "说三个字"
 | `python setup.py --dry-run`           | 只探测、不启动、不写配置              |
 | `python setup.py --ports 18500,18501` | 端口被占时手动指定                    |
 | `python setup.py --clients none`      | 只起桥接，不碰客户端配置              |
+
+> 重跑 `setup.py` 是安全的：它不会重复加端口，也不会把你正在用的配置改到别的端口上。
 
 ---
 
@@ -79,7 +122,7 @@ opencode run -m workbuddy/deepseek-v4.1-flash "说三个字"
 模型选择器里会分成两个组：
 
 ```
-WorkBuddy 国内版 (China)      → 22 个模型，倍率后缀如 GLM-5.3 (0.79x)
+WorkBuddy 国内版 (China)      → 22 个模型，倍率后缀如 GLM-5.3 (0.69x)
 WorkBuddy International (国际版) → 该订阅自己的模型清单
 ```
 
@@ -107,7 +150,7 @@ WorkBuddy International (国际版) → 该订阅自己的模型清单
 - **多实例**：国内版 / 国际版同时接入，端口、日志、失败快照全部分开。
 - **模型清单自动跟随**：桌面端改价、上下架模型，重启桥接就同步。
 - **两种协议**：Chat Completions + Responses API（Codex 必需）。
-- **工具调用**：流式分片会正确聚合成 `tool_calls`，Agent 模式可用。
+- **工具调用**：流式分片会正确聚合成 `tool_calls`，OpenCode / Cursor 的 Agent 模式可用。
 - **图片输入**：模型支持时透传。
 - **推理档位自动补齐**：缺 `reasoning_effort` 会 400 的模型，桥接按产品配置注入。
 - **桌面端掉了会自愈**：管道不可达时按需拉起桌面端并等待重连（带冷却）。
@@ -236,17 +279,18 @@ print(client.chat.completions.create(
 
 ## 故障排查
 
-| 现象                                                | 原因                       | 处理                                       |
-| --------------------------------------------------- | -------------------------- | ------------------------------------------ |
-| `FATAL: WBIPC client library not found`             | 安装目录没探测到           | 设 `WORKBUDDY_HOME=...\WorkBuddy`          |
-| setup 说某会话 `NOT reachable`                      | 那个版本没开 / 没登录      | 开桌面端并登录，重跑 `python setup.py`     |
-| `/health` 里 `wbipc.available=false`                | 同上                       | 同上                                       |
-| 503 `WorkBuddy 桌面端未运行`                        | 同上                       | 手动开一次桌面端                           |
-| 400 `missing model`                                 | 模型 id 过期               | `GET /v1/models` 重新取                    |
-| 400 提到 `reasoning_effort`                         | 该模型必须显式给档位       | 桥接已自动补齐；仍失败就重启桌面端         |
-| Codex 报 `wire_api = "chat" is no longer supported` | 配置没换                   | 改成 `responses`                           |
-| setup 说端口被占                                    | 上一次没退干净             | `python setup.py stop` 或 `--ports` 换端口 |
-| setup 说「已有 autostart 任务」                     | 机器上还有别的工作桥接任务 | 先删旧任务再重跑，避免抢端口               |
+| 现象                                                | 原因                       | 处理                                          |
+| --------------------------------------------------- | -------------------------- | --------------------------------------------- |
+| `FATAL: WBIPC client library not found`             | 安装目录没探测到           | 设 `WORKBUDDY_HOME=...\WorkBuddy`             |
+| setup 说某会话 `NOT reachable`                      | 那个版本没开 / 没登录      | 开桌面端并登录，重跑 `python setup.py`        |
+| `/health` 里 `wbipc.available=false`                | 同上                       | 同上                                          |
+| 503 `WorkBuddy 桌面端未运行`                        | 同上                       | 手动开一次桌面端                              |
+| 400 `missing model`                                 | 模型 id 过期               | `GET /v1/models` 重新取                       |
+| 400 提到 `reasoning_effort`                         | 该模型必须显式给档位       | 桥接已自动补齐；仍失败就重启桌面端            |
+| Codex 报 `wire_api = "chat" is no longer supported` | 配置没换                   | 改成 `responses`                              |
+| Codex 报 `Not inside a trusted directory`           | Codex 自身的安全限制       | 加 `--skip-git-repo-check`，或在 git 仓库里跑 |
+| setup 说端口被占                                    | 上一次没退干净             | `python setup.py stop` 或 `--ports` 换端口    |
+| setup 说「已有 autostart 任务」                     | 机器上还有别的工作桥接任务 | 先删旧任务再重跑，避免抢端口                  |
 
 更多见 [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md)。
 
@@ -273,6 +317,7 @@ workbuddy-bridge/
 ├─ setup.py                      # 一键部署：发现 → 起服务 → 写客户端配置 → 装自启
 ├─ doctor.py                     # 自检，先跑这个
 ├─ bridge.py                     # 核心：OpenAI 兼容 HTTP 服务 + WBIPC 上行
+├─ translate.py                  # SSE 聚合 / 工具调用合并（纯函数，可单测）
 ├─ instance.py                   # --instance / --port / --config-dir 解析
 ├─ responses_api.py              # Responses ⇄ Chat Completions（Codex 用）
 ├─ wbpaths.py                    # 安装目录 / 配置目录探测（支持多安装）
@@ -286,6 +331,7 @@ workbuddy-bridge/
 │  ├─ opencode.json              # provider 片段
 │  ├─ codex.config.toml          # provider 片段（wire_api=responses）
 │  └─ cursor-point-to-bridge.py  # 改 Cursor 设置库（带备份/回滚）
+├─ tests/                        # 协议逻辑单测（CI 里跑，不需要装 WorkBuddy）
 ├─ docs/
 │  ├─ ARCHITECTURE.md
 │  ├─ CLIENTS.md
