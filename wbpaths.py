@@ -86,9 +86,14 @@ def _from_running_process():
             ["powershell", "-NoProfile", "-Command",
              "(Get-Process WorkBuddy -ErrorAction SilentlyContinue |"
              " Select-Object -First 1).Path"],
-            capture_output=True, text=True, timeout=20,
+            capture_output=True, timeout=20,
             creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
-        path = (out.stdout or "").strip()
+        # PowerShell writes the console code page, which is GBK on a Chinese
+        # Windows: decoding as UTF-8 would raise and lose the path entirely.
+        raw = out.stdout or b""
+        path = raw.decode("utf-8", "replace").strip()
+        if "\ufffd" in path:
+            path = raw.decode("mbcs", "replace").strip()
         if path and _looks_like_install(os.path.dirname(path)):
             return os.path.dirname(path)
     except Exception:

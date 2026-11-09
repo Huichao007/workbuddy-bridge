@@ -296,9 +296,14 @@ def desktop_running():
     try:
         out = subprocess.run(
             ["tasklist", "/FI", "IMAGENAME eq WorkBuddy.exe", "/NH"],
-            capture_output=True, text=True, timeout=15,
+            capture_output=True, timeout=15,
             creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
-        return "WorkBuddy.exe" in (out.stdout or "")
+        # tasklist writes the OEM code page on Windows (GBK on a Chinese
+        # install), so decode leniently instead of trusting UTF-8.
+        text = (out.stdout or b"").decode("utf-8", "replace")
+        if "\ufffd" in text:
+            text = (out.stdout or b"").decode("mbcs", "replace")
+        return "WorkBuddy.exe" in text
     except Exception:
         return True  # cannot tell; assume running so we never relaunch blindly
 

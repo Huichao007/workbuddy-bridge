@@ -74,6 +74,52 @@ class Abort(Exception):
     pass
 
 
+def console_encoding():
+    """Encoding the Windows console tools actually emit.
+
+    tasklist / schtasks write in the OEM code page (936 = GBK on a Chinese
+    Windows), not UTF-8. Decoding them as UTF-8 raises UnicodeDecodeError inside
+    subprocess's reader thread and takes the whole run down - which is exactly
+    what happens on a Chinese machine. Ask the OS, then fall back.
+    """
+    if not IS_WIN:
+        return None
+    try:
+        cp = subprocess.run(["cmd", "/c", "chcp"], capture_output=True,
+                            creationflags=CREATE_NO_WINDOW)
+        raw = cp.stdout or b""
+        for token in raw.split():
+            t = token.strip().decode("ascii", "ignore")
+            if t.isdigit():
+                enc = "cp%s" % t
+                "".encode(enc)          # validate the codec name
+                return enc
+    except Exception:
+        pass
+    for enc in ("cp936", "cp1252", "cp65001"):
+        try:
+            "".encode(enc)
+            return enc
+        except LookupError:
+            continue
+    return None
+
+
+CONSOLE_ENC = console_encoding()
+
+
+def run_console(args, timeout=30):
+    """Run a Windows console tool and return (rc, text) without decoding errors."""
+    try:
+        p = subprocess.run(args, capture_output=True,
+                           creationflags=CREATE_NO_WINDOW, timeout=timeout)
+    except Exception as e:
+        return 1, "%r" % (e,)
+    text = (p.stdout or b"").decode(CONSOLE_ENC or "utf-8", "replace")
+    err = (p.stderr or b"").decode(CONSOLE_ENC or "utf-8", "replace")
+    return p.returncode, (text + err)
+
+
 def http_json(url, timeout=15):
     with urllib.request.urlopen(url, timeout=timeout) as r:
         return json.loads(r.read().decode("utf-8"))
@@ -394,10 +440,8 @@ def alive(pid):
         return False
     try:
         if IS_WIN:
-            out = subprocess.run(["tasklist", "/FI", "PID eq %d" % int(pid), "/NH"],
-                                 capture_output=True, text=True,
-                                 creationflags=CREATE_NO_WINDOW)
-            return str(int(pid)) in (out.stdout or "")
+            rc, out = run_console(["tasklist", "/FI", "PID eq %d" % int(pid), "/NH"])
+            return str(int(pid)) in out
         os.kill(int(pid), 0)
         return True
     except Exception:
@@ -701,14 +745,9 @@ def existing_bridge_tasks():
     """
     if not IS_WIN:
         return []
-    try:
-        r = subprocess.run(["schtasks", "/Query", "/FO", "CSV", "/NH"],
-                           capture_output=True, text=True,
-                           creationflags=CREATE_NO_WINDOW, timeout=30)
-    except Exception:
-        return []
+    rc, out = run_console(["schtasks", "/Query", "/FO", "CSV", "/NH"])
     found = []
-    for line in (r.stdout or "").splitlines():
+    for line in out.splitlines():
         parts = [p.strip('"') for p in line.split('","')]
         if len(parts) < 1:
             continue
@@ -735,14 +774,12 @@ def register_tasks():
     if not os.path.isfile(script):
         warn("scripts/install-task.ps1 missing - skipped autostart")
         return False
-    r = subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass",
-                        "-File", script], capture_output=True, text=True,
-                       creationflags=CREATE_NO_WINDOW)
-    if r.returncode == 0:
+    rc, out = run_console(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass",
+                           "-File", script], timeout=60)
+    if rc == 0:
         ok("autostart registered: %s + %s (every 10 min)" % (TASK_ONCE, TASK_KEEP))
         return True
-    warn("could not register scheduled tasks: %s"
-         % ((r.stderr or r.stdout or "").strip()[:300]))
+    warn("could not register scheduled tasks: %s" % (out.strip()[:300]))
     return False
 
 
@@ -751,16 +788,13 @@ def remove_tasks():
         return
     script = os.path.join(HERE, "scripts", "install-task.ps1")
     if os.path.isfile(script):
-        subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass",
-                        "-File", script, "-Remove"], capture_output=True,
-                       text=True, creationflags=CREATE_NO_WINDOW)
+        run_console(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass",
+                     "-File", script, "-Remove"], timeout=60)
         say("  autostart tasks removed (if they existed)")
         return
     for t in (TASK_ONCE, TASK_KEEP):
-        r = subprocess.run(["schtasks", "/Delete", "/TN", t, "/F"],
-                           capture_output=True, text=True,
-                           creationflags=CREATE_NO_WINDOW)
-        if r.returncode == 0:
+        rc, _ = run_console(["schtasks", "/Delete", "/TN", t, "/F"])
+        if rc == 0:
             say("  removed task %s" % t)
 
 
