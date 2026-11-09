@@ -172,7 +172,8 @@ $env:WORKBUDDY_API_KEY = "wb-bridge-local"      # 占位，桥接不校验
 codex -c model_provider=workbuddy -c model=deepseek-v4.1-flash exec "写个快排"
 ```
 
-关键点只有一条：`wire_api = "responses"`。
+关键点只有一条：`wire_api = "responses"`。如果你的 Codex 版本已经不需要占位 key，
+可以用 `requires_openai_auth = false` 代替 `env_key` 那一行，两种写法桥接都接受。
 
 ### Cursor
 

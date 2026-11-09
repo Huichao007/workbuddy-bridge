@@ -693,11 +693,14 @@ CODEX_BLOCK = """
 name = "{label}"
 base_url = "http://127.0.0.1:{port}/v1"
 wire_api = "responses"
+# The bridge authenticates through the WorkBuddy desktop app, so the key is a
+# placeholder. Keep env_key if your Codex build requires one to exist; newer
+# builds accept requires_openai_auth = false instead.
 env_key = "WORKBUDDY_API_KEY"
 """
 
 
-def wire_codex(instances, path, dry=False):
+def wire_codex(instances, path, dry=False, force=False):
     if not path:
         return False
     try:
@@ -705,27 +708,53 @@ def wire_codex(instances, path, dry=False):
             text = fh.read()
     except FileNotFoundError:
         text = ""
-    added = []
+    added, moved = [], []
     for name, spec in instances.items():
         pid = spec.get("provider") or name
-        if re.search(r"^\s*\[model_providers\.%s\]" % re.escape(pid), text, re.M):
+        port = int(spec["port"])
+        header = re.search(r"^\s*\[model_providers\.%s\]" % re.escape(pid),
+                           text, re.M)
+        if header:
+            # The block exists. If its base_url points at a different port that
+            # is no longer alive, retarget it - otherwise Codex keeps talking to
+            # nothing after the user changes ports.
+            tail = text[header.end():]
+            nxt = re.search(r"^\s*\[", tail, re.M)
+            block = tail[:nxt.start()] if nxt else tail
+            m = re.search(r'base_url\s*=\s*"http://127\.0\.0\.1:(\d+)/v1"', block)
+            if not m:
+                continue
+            old = int(m.group(1))
+            if old == port or (not force and live_bridge_on(old)):
+                continue
+            new_block = re.sub(
+                r'base_url\s*=\s*"http://127\.0\.0\.1:\d+/v1"',
+                'base_url = "http://127.0.0.1:%d/v1"' % port, block, count=1)
+            text = text[:header.end()] + new_block + tail[len(block):]
+            moved.append("%s %d->%d" % (pid, old, port))
             continue
         text += CODEX_BLOCK.format(name=name, pid=pid,
                                    label=spec.get("label") or name,
-                                   port=int(spec["port"]))
+                                   port=port)
         added.append(pid)
-    if not added:
+    if not added and not moved:
         ok("codex config already has every provider: %s" % path)
         return False
     if dry:
-        say("  would add %s to %s" % (", ".join(added), path))
+        say("  would change %s in %s"
+            % (", ".join(added + moved), path))
         return False
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     bak = backup(path)
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
         fh.write(text if text.endswith("\n") else text + "\n")
-    ok("added %s to %s%s"
-       % (", ".join(added), path,
+    parts = []
+    if added:
+        parts.append("added " + ", ".join(added))
+    if moved:
+        parts.append("retargeted " + ", ".join(moved))
+    ok("%s in %s%s"
+       % ("; ".join(parts), path,
           (" (backup %s)" % os.path.basename(bak)) if bak else ""))
     return True
 
@@ -895,7 +924,7 @@ def cmd_setup(args):
             wrote |= wire_opencode(table, args.opencode_json or opencode_config_path(),
                                    force=args.force)
         if "codex" in clients:
-            wrote |= wire_codex(table, codex_config_path())
+            wrote |= wire_codex(table, codex_config_path(), force=args.force)
         if not wrote:
             say("  nothing to change")
 
