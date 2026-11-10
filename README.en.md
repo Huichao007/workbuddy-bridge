@@ -13,6 +13,8 @@ international edition can also run at the same time, each on its own port.
 
 > Windows only — it depends on the app's Windows named pipe.
 
+<img src="docs/site/design/handoff/screens/02-architecture.png" alt="Architecture: the WorkBuddy desktop credit pool, bridged over loopback, feeding OpenCode and Codex CLI at the same time" width="100%">
+
 ## What you get
 
 | You get                                     | How you use it                                                                       |

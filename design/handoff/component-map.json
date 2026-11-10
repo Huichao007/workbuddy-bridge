@@ -1,0 +1,16 @@
+{
+  "componentCount": 0,
+  "screenCount": 1,
+  "components": [],
+  "screens": [
+    {
+      "id": "0:5",
+      "name": "02 架构图 Architecture",
+      "width": 1240,
+      "height": 648,
+      "componentRefs": [],
+      "topLevelSections": 0
+    }
+  ],
+  "sections": []
+}

@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WorkBuddy Bridge：一份积分，OpenCode 和 Codex 同时用</title>
+    <meta
+      name="description"
+      content="装一次，OpenCode 和 Codex CLI 就能直接用 WorkBuddy 的模型和积分。不需要 API key，只走本机回环。"
+    />
+    <meta
+      property="og:title"
+      content="WorkBuddy Bridge：一份积分，两个客户端"
+    />
+    <meta
+      property="og:description"
+      content="装一次，OpenCode 和 Codex CLI 就能直接用 WorkBuddy 的模型和积分。不需要 API key。"
+    />
+    <meta property="og:type" content="website" />
+    <style>
+      /* ── 设计 token：来自 design/handoff/tokens/tokens.css，唯一来源 ── */
+      :root {
+        --color-bg: #08090a;
+        --color-surface: #0f1011;
+        --color-surface-2: #191a1b;
+        --color-surface-3: #28282c;
+        --color-line: #23252a;
+        --color-line-soft: #18191a;
+        --color-text-1: #f7f8f8;
+        --color-text-2: #d0d6e0;
+        --color-text-3: #8a8f98;
+        --color-text-4: #7e838c;
+        --color-brand: #7170ff;
+        --color-brand-soft: #5e6ad2;
+        --color-brand-deep: #4b4bd8;
+        --color-brand-deep-2: #3f3fbe;
+        --color-brand-dim: #16172b;
+        --color-brand-ink: #a8a8ff;
+        --color-border-strong: #5e6570;
+        --color-ok: #27a644;
+        --color-warn: #f5a623;
+        --color-on-solid: #08090a;
+        --spacing-s1: 4px;
+        --spacing-s2: 8px;
+        --spacing-s3: 12px;
+        --spacing-s4: 16px;
+        --spacing-s5: 20px;
+        --spacing-s6: 24px;
+        --spacing-s7: 32px;
+        --spacing-s8: 40px;
+        --spacing-s9: 48px;
+        --spacing-s10: 64px;
+        --spacing-s11: 96px;
+        --spacing-s12: 128px;
+        --radius-sm: 5px;
+        --radius-md: 10px;
+        --radius-lg: 16px;
+        --radius-full: 999px;
+        --text-fs1: 11px;
+        --text-fs2: 12px;
+        --text-fs3: 13px;
+        --text-fs4: 15px;
+        --text-fs5: 17px;
+        --text-fs6: 22px;
+        --text-fs7: 28px;
+        --text-fs8: 40px;
+        --text-fs9: 56px;
+        /* 页面层 token：与 design/handoff/tokens/tokens.css 同步 */
+        --leading-display: 1.05;
+        --leading-title: 1.15;
+        --leading-body: 1.5;
+        --leading-prose: 1.7;
+        --layout-container: 1200px;
+        --layout-nav-h: 56px;
+        --layout-tap: 44px;
+        --layout-hairline: 1px;
+        --layout-dot: 7px;
+        --layout-icon-sm: 6px;
+        --size-h1-min: 25px;
+        --size-h1-max: 44px;
+        --size-h2-min: 21px;
+        --size-h2-max: 28px;
+        --size-nav-btn: 13px;
+        --motion-fast: 160ms;
+        --font-sans:
+          "Inter", "Noto Sans SC", "Microsoft YaHei", system-ui, -apple-system,
+          sans-serif;
+        --font-mono:
+          "JetBrains Mono", "SFMono-Regular", ui-monospace, Consolas, monospace;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--color-bg);
+        color: var(--color-text-1);
+        font-family: var(--font-sans);
+        font-size: var(--text-fs4);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        html {
+          scroll-behavior: smooth;
+        }
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        width: 100%;
+        max-width: var(--layout-container);
+        margin: 0 auto;
+        padding: 0 var(--spacing-s6);
+      }
+      .eyebrow {
+        font-size: var(--text-fs1);
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--color-brand);
+        margin: 0 0 var(--spacing-s4);
+      }
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+      }
+      h1 {
+        font-size: clamp(var(--size-h1-min), 3.1vw, var(--size-h1-max));
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.24;
+      }
+      h2 {
+        font-size: clamp(var(--size-h2-min), 2.6vw, var(--size-h2-max));
+        font-weight: 700;
+      }
+      .lede {
+        color: var(--color-text-2);
+        font-size: var(--text-fs5);
+        line-height: 1.65;
+        margin: var(--spacing-s4) 0 0;
+        max-width: 60ch;
+      }
+
+      /* ── nav ── */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(var(--spacing-s3));
+        background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+        border-bottom: 1px solid var(--color-line-soft);
+      }
+      .nav .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: var(--layout-nav-h);
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-s2);
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .dot {
+        width: var(--layout-dot);
+        height: var(--layout-dot);
+        border-radius: var(--radius-full);
+        background: var(--color-ok);
+        flex: none;
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-s4);
+      }
+      .nav-link {
+        color: var(--color-text-3);
+        font-size: var(--text-fs2);
+        transition: color var(--motion-fast);
+      }
+      .nav-link:hover,
+      .nav-link:focus-visible {
+        color: var(--color-text-1);
+      }
+      /* 基础层（手机）隐藏次级导航，宽屏再显示 */
+      .nav-link {
+        display: none;
+      }
+      @media (min-width: 640px) {
+        .nav-link {
+          display: inline;
+        }
+      }
+
+      /* ── hero ── */
+      .hero {
+        padding: var(--spacing-s8) 0 var(--spacing-s7);
+        border-bottom: 1px solid var(--color-line-soft);
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-s7);
+        align-items: center;
+      }
+      .hero-grid > * {
+        min-width: 0;
+      }
+      @media (min-width: 900px) {
+        .hero-grid {
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: var(--spacing-s9);
+        }
+        .hero {
+          padding: var(--spacing-s11) 0 var(--spacing-s9);
+        }
+      }
+
+      /* 唯一实心按钮 */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-s2);
+        height: var(--layout-tap);
+        padding: 0 var(--spacing-s5);
+        border-radius: var(--radius-md);
+        font-size: var(--text-fs4);
+        font-weight: 600;
+        border: var(--layout-hairline) solid transparent;
+        background: var(--color-brand-deep);
+        color: var(--color-on-brand);
+        transition:
+          background var(--motion-fast),
+          transform var(--motion-fast);
+      }
+      .btn:hover {
+        background: var(--color-brand-deep-2);
+      }
+      .btn:active {
+        transform: translateY(var(--layout-hairline));
+      }
+      .btn:focus-visible {
+        outline: var(--layout-hairline) solid var(--color-brand-ink);
+        outline-offset: var(--layout-icon-sm);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--color-text-2);
+        border-color: var(--color-border-strong);
+      }
+      .btn-ghost:hover {
+        background: var(--color-surface-2);
+        color: var(--color-text-1);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .btn,
+        .nav-link {
+          transition: none;
+        }
+        .btn:active {
+          transform: none;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+      .btn-sm {
+        height: calc(var(--layout-tap) - var(--spacing-s2));
+        padding: 0 var(--spacing-s3);
+        font-size: var(--size-nav-btn);
+      }
+      .proof-note {
+        margin-top: var(--spacing-s6);
+        font-size: var(--text-fs3);
+        color: var(--color-text-3);
+      }
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-s3);
+        margin-top: var(--spacing-s7);
+      }
+
+      /* 命令行卡 */
+      .cmd {
+        background: var(--color-surface);
+        border: 1px solid var(--color-line);
+        border-radius: var(--radius-md);
+        padding: var(--spacing-s4) var(--spacing-s4);
+        font-family: var(--font-mono);
+        font-size: var(--text-fs3);
+        line-height: 1.9;
+        color: var(--color-text-2);
+        overflow-x: auto;
+        min-width: 0;
+      }
+      .cmd .p {
+        color: var(--color-text-4);
+        user-select: none;
+      }
+      .cmd b {
+        color: var(--color-text-1);
+        font-weight: 500;
+      }
+      .cmd .c {
+        color: var(--color-text-4);
+      }
+
+      /* 数字条 */
+      .stats {
+        display: grid;
+        grid-template-columns: 1fr;
+        border: 1px solid var(--color-line);
+        border-radius: var(--radius-md);
+        background: var(--color-surface);
+        overflow: hidden;
+      }
+      .stat {
+        padding: var(--spacing-s4) var(--spacing-s4);
+        border-top: 1px solid var(--color-line);
+      }
+      .stat:first-child {
+        border-top: 0;
+      }
+      .stat .n {
+        font-size: var(--text-fs7);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        font-variant-numeric: tabular-nums;
+        line-height: 1.1;
+      }
+      .stat .l {
+        font-size: var(--text-fs1);
+        color: var(--color-text-3);
+        margin-top: var(--spacing-s1);
+      }
+      @media (min-width: 560px) {
+        .stats {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .stat {
+          border-top: 0;
+          border-left: 1px solid var(--color-line);
+        }
+        .stat:first-child {
+          border-left: 0;
+        }
+      }
+
+      /* ── section ── */
+      section {
+        padding: var(--spacing-s8) 0;
+      }
+      @media (min-width: 900px) {
+        section {
+          padding: var(--spacing-s11) 0;
+        }
+      }
+      .sec-head {
+        max-width: 62ch;
+        margin-bottom: var(--spacing-s8);
+      }
+      .sec-head .lede {
+        margin-top: var(--spacing-s3);
+      }
+
+      /* 主图 */
+      .figure {
+        border: 1px solid var(--color-line);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        background: var(--color-surface);
+      }
+      .figure img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: 60vh;
+        object-fit: contain;
+      }
+      .figure figcaption {
+        padding: var(--spacing-s3) var(--spacing-s4);
+        border-top: 1px solid var(--color-line);
+        font-size: var(--text-fs2);
+        color: var(--color-text-3);
+      }
+
+      /* 两栏文字块（不是三卡片） */
+      .pairs {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-s6);
+      }
+      .pairs > * {
+        min-width: 0;
+      }
+      @media (min-width: 760px) {
+        .pairs {
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--spacing-s8) var(--spacing-s9);
+        }
+      }
+      .pair h3 {
+        font-size: var(--text-fs5);
+        font-weight: 700;
+        margin-bottom: var(--spacing-s2);
+      }
+      .pair p {
+        margin: 0;
+        color: var(--color-text-2);
+        font-size: var(--text-fs3);
+        line-height: 1.7;
+      }
+      .pair .k {
+        display: block;
+        font-family: var(--font-mono);
+        font-size: var(--text-fs1);
+        color: var(--color-text-4);
+        letter-spacing: 0.06em;
+        margin-bottom: var(--spacing-s2);
+      }
+
+      /* 证据：实测输出 */
+      .proof {
+        background: var(--color-surface);
+        border: 1px solid var(--color-line);
+        border-radius: var(--radius-md);
+        padding: var(--spacing-s5);
+        overflow-x: auto;
+        font-family: var(--font-mono);
+        font-size: var(--text-fs3);
+        line-height: 1.8;
+        color: var(--color-text-2);
+        white-space: pre;
+        margin: 0;
+        align-self: start;
+      }
+      .proof .ok {
+        color: var(--color-ok);
+      }
+      .proof .dim {
+        color: var(--color-text-4);
+      }
+      .proof .hi {
+        color: var(--color-text-1);
+      }
+
+      /* 限制 */
+      .limits {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border-top: 1px solid var(--color-line);
+      }
+      .limits li {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: var(--spacing-s4);
+        padding: var(--spacing-s4) 0;
+        border-bottom: 1px solid var(--color-line-soft);
+        font-size: var(--text-fs3);
+        color: var(--color-text-2);
+        line-height: 1.7;
+      }
+      .limits .idx {
+        font-family: var(--font-mono);
+        font-size: var(--text-fs1);
+        color: var(--color-text-4);
+        padding-top: var(--layout-hairline);
+        font-variant-numeric: tabular-nums;
+      }
+      .limits strong {
+        color: var(--color-text-1);
+        font-weight: 600;
+      }
+
+      /* 风险声明 */
+      .risk {
+        border: 1px solid var(--color-line);
+        border-left: var(--layout-hairline) solid var(--color-warn);
+        border-radius: var(--radius-md);
+        background: var(--color-surface);
+        padding: var(--spacing-s5);
+      }
+      .risk h3 {
+        font-size: var(--text-fs4);
+        font-weight: 700;
+        margin-bottom: var(--spacing-s3);
+      }
+      .risk p {
+        margin: 0 0 var(--spacing-s3);
+        font-size: var(--text-fs3);
+        color: var(--color-text-2);
+        line-height: 1.75;
+      }
+      .risk p:last-child {
+        margin-bottom: 0;
+      }
+      .risk strong {
+        color: var(--color-text-1);
+      }
+
+      footer {
+        border-top: 1px solid var(--color-line-soft);
+        padding: var(--spacing-s7) 0;
+        color: var(--color-text-3);
+        font-size: var(--text-fs2);
+      }
+      footer .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-s3) var(--spacing-s5);
+        justify-content: space-between;
+        align-items: center;
+      }
+      footer a {
+        color: var(--color-text-2);
+      }
+      footer a:hover {
+        color: var(--color-text-1);
+      }
+      :focus-visible {
+        outline: var(--layout-hairline) solid var(--color-brand-ink);
+        outline-offset: var(--layout-icon-sm);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap">
+        <span class="brand"
+          ><span class="dot" aria-hidden="true"></span>WorkBuddy Bridge</span
+        >
+        <div class="nav-right">
+          <a class="nav-link" href="#how">怎么工作</a>
+          <a class="nav-link" href="#proof">验证</a>
+          <a class="nav-link" href="#limits">限制</a>
+          <a
+            class="btn-ghost btn"
+            href="https://github.com/Huichao007/workbuddy-bridge"
+            class="btn btn-sm"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Windows · 本机回环 · 无需 API key</p>
+          <h1>一份 WorkBuddy 积分，<br />OpenCode 和 Codex 同时花</h1>
+          <p class="lede">
+            装一次，两个客户端各自拿到一组模型。积分仍然只从你已经在付的那份订阅扣，
+            不新建账号，不填 key，不上传 token。
+          </p>
+          <div class="cta-row">
+            <a class="btn" href="https://github.com/Huichao007/workbuddy-bridge"
+              >查看项目并安装</a
+            >
+            <a class="btn btn-ghost" href="#how">先看它怎么工作</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="cmd" role="group" aria-label="安装命令">
+            <span class="p">$ </span
+            ><b>git clone</b>
+            https://github.com/Huichao007/workbuddy-bridge<br />
+            <span class="p">$ </span><b>cd</b> workbuddy-bridge<br />
+            <span class="p">$ </span><b>python</b> setup.py<br />
+            <span class="c"># 自动发现 → 起服务 → 写客户端配置 → 装自启</span>
+          </div>
+          <div class="stats" style="margin-top: var(--spacing-s4)">
+            <div class="stat">
+              <div class="n" id="modelCount">25</div>
+              <div class="l">个模型 · 从桌面端现读</div>
+            </div>
+            <div class="stat">
+              <div class="n">0</div>
+              <div class="l">个 API key</div>
+            </div>
+            <div class="stat">
+              <div class="n">2</div>
+              <div class="l">个客户端同时可用</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="how">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow">架构</p>
+          <h2>它只做一件事：把桌面端已登录的管道，翻译成 OpenAI 接口</h2>
+          <p class="lede">
+            没有中转服务器，没有第二个账号。请求从本机回环进，从桌面端原本的计费通道出。
+          </p>
+        </div>
+
+        <figure class="figure">
+          <img
+            src="design/handoff/screens/02-architecture.png"
+            alt="架构图：WorkBuddy 桌面端积分池经本机回环桥接（127.0.0.1:18490），分别供 OpenCode 与 Codex CLI 使用；国内版与国际版各占一个端口。"
+            width="1240"
+            height="648"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>
+            同一份积分池，两个客户端各拿一组模型。国内版与国际版是两个独立积分池，各自一条端口。
+          </figcaption>
+        </figure>
+
+        <div class="pairs" style="margin-top: var(--spacing-s10)">
+          <div class="pair">
+            <span class="k">01 / 零密钥</span>
+            <h3>客户端填任意占位 key</h3>
+            <p>
+              鉴权由桌面端的登录态承担。仓库里不含任何密钥，也没有任何一处需要你去复制粘贴
+              token。
+            </p>
+          </div>
+          <div class="pair">
+            <span class="k">02 / 双协议</span>
+            <h3>Chat Completions + Responses</h3>
+            <p>
+              OpenCode、Cursor、任意 SDK 走
+              <code>/v1/chat/completions</code>；Codex CLI 走
+              <code>/v1/responses</code>，原生支持，不用降级。
+            </p>
+          </div>
+          <div class="pair">
+            <span class="k">03 / 不碰配置</span>
+            <h3>只往你的配置里加，不改旧的</h3>
+            <p>
+              写 <code>opencode.json</code> 和
+              <code>config.toml</code> 之前先备份，只动自己那几行，其它 provider
+              和默认模型原样保留。
+            </p>
+          </div>
+          <div class="pair">
+            <span class="k">04 / 掉线自愈</span>
+            <h3>登录自启，每 10 分钟保活</h3>
+            <p>
+              桌面端关掉了会按需拉起并等待重连。桥接进程挂了，计划任务会把它重新起来。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof" style="border-top: 1px solid var(--color-line-soft)">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow">证据</p>
+          <h2>不是"应该能跑"，是刚跑过</h2>
+          <p class="lede">
+            下面两段是这台机器上的真实输出。<code>smoke.py</code>
+            会挑倍率最低的模型， 把两种协议各打一次，打印耗时和 token 数。
+          </p>
+        </div>
+
+        <div class="pairs">
+          <pre
+            class="proof"
+          ><span class="dim">PS&gt;</span> <span class="hi">python smoke.py</span>
+
+  <span class="ok">[ok]</span> default chat/hy4free  1.9s, 'OK', 68 tokens
+  <span class="ok">[ok]</span> default responses/hy4free  2.3s, 'OK'
+
+<span class="ok">SMOKE OK</span> - both protocols answered
+with a real model call</pre>
+
+          <pre
+            class="proof"
+          ><span class="dim">PS&gt;</span> <span class="hi">python doctor.py</span>
+
+WorkBuddy Bridge - doctor
+
+1. installation
+  <span class="ok">[PASS]</span> desktop install found      D:\wb\WorkBuddy
+  <span class="ok">[PASS]</span> bundled WBIPC client lib
+  <span class="ok">[PASS]</span> WorkBuddy.exe              found
+
+2. targets
+  <span class="ok">[PASS]</span> default: pipe handshake
+  <span class="ok">[PASS]</span> default: port 18490 listening
+  <span class="ok">[PASS]</span> default: /health           wbipc=True models=22
+  <span class="ok">[PASS]</span> default: /v1/models        25 models
+
+<span class="ok">ALL GOOD</span> - point your client at
+http://127.0.0.1:18490/v1</pre>
+        </div>
+
+        <p class="proof-note">
+          第三方依赖：0 个。<code>pip install</code> 一个包都不用，全部标准库。
+        </p>
+      </div>
+    </section>
+
+    <section id="limits" style="border-top: 1px solid var(--color-line-soft)">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow">诚实的限制</p>
+          <h2>这五个边界是设计取舍，不是待修 bug</h2>
+          <p class="lede">
+            买之前先看清楚。这些都不会被"后续版本"改掉，因为它们来自管道本身。
+          </p>
+        </div>
+
+        <ul class="limits">
+          <li>
+            <span class="idx">01</span
+            ><span
+              ><strong>缓冲式转发，没有逐字流式。</strong
+              >管道没有流式原语。首字延迟约等于整段生成时间，长回答会"卡一下然后一次吐完"。</span
+            >
+          </li>
+          <li>
+            <span class="idx">02</span
+            ><span
+              ><strong>单次响应约 640 KB 上限。</strong>超出会
+              <code>E_PAYLOAD_TOO_LARGE</code
+              >。本项目不提供修改安装包绕过它的方案。</span
+            >
+          </li>
+          <li>
+            <span class="idx">03</span
+            ><span
+              ><strong>桌面端必须开着且已登录。</strong
+              >桥接是"借用"不是"替代"，它不能在没有登录态时凭空产出积分。</span
+            >
+          </li>
+          <li>
+            <span class="idx">04</span
+            ><span
+              ><strong>仅 Windows。</strong>依赖 Windows 命名管道，macOS 和
+              Linux 用不了。</span
+            >
+          </li>
+          <li>
+            <span class="idx">05</span
+            ><span
+              ><strong>积分归属不变。</strong
+              >消耗全记在你自己账户上，只有一条计费通道，不存在"别人的额度"。</span
+            >
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section style="border-top: 1px solid var(--color-line-soft)">
+      <div class="wrap">
+        <div class="risk">
+          <h3>合规与风险 · 请读完再决定</h3>
+          <p>
+            本项目通过<strong>非官方入口</strong>（桌面端自带的 IPC
+            客户端）复用你的订阅额度。WorkBuddy
+            的用户协议可能不认可"用第三方客户端消耗订阅积分"。
+          </p>
+          <p>
+            厂商可能随时改协议、改管道、封禁账号。<strong>这就是一个个人自用的便利工具</strong>，不承诺长期可用，也不承诺不违反服务条款。商用、对外提供服务、代他人调用，风险更高。
+          </p>
+          <p>
+            本项目与 WorkBuddy
+            官方无关，未获其认可或授权。名称仅用于说明兼容对象。默认只监听
+            <code>127.0.0.1</code>，请保持默认。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <span>MIT · 纯 Python 标准库 · Windows 10/11</span>
+        <span>
+          <a href="https://github.com/Huichao007/workbuddy-bridge">GitHub</a> ·
+          <a
+            href="https://github.com/Huichao007/workbuddy-bridge/blob/main/docs/LIMITATIONS.md"
+            >限制</a
+          >
+          ·
+          <a
+            href="https://github.com/Huichao007/workbuddy-bridge/blob/main/SECURITY.md"
+            >安全</a
+          >
+        </span>
+      </div>
+    </footer>
+
+    <script>
+      // 模型数来自本机桥接现读；读不到就保留设计稿里的数字，不撒谎。
+      fetch("http://127.0.0.1:18490/v1/models", { cache: "no-store" })
+        .then(function (r) {
+          return r.ok ? r.json() : null;
+        })
+        .then(function (d) {
+          var el = document.getElementById("modelCount");
+          if (el && d && d.data && d.data.length)
+            el.textContent = String(d.data.length);
+        })
+        .catch(function () {
+          /* 没装桥接时保持静态值 */
+        });
+    </script>
+  </body>
+</html>

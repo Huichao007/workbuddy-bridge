@@ -9,6 +9,10 @@
 
 一条命令装好，两个客户端同时可用。国内版、国际版的积分还能**同时**接入，各走各的端口。
 
+> **先看这张图就懂了** → [介绍页](https://huichao007.github.io/workbuddy-bridge/)（一份积分怎么同时喂两个客户端）
+
+<img src="docs/site/design/handoff/screens/02-architecture.png" alt="架构图：WorkBuddy 桌面端积分池经本机回环桥接，分别供 OpenCode 与 Codex CLI 使用" width="100%">
+
 ---
 
 ## 装上就有的东西

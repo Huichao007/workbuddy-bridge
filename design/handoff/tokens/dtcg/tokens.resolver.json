@@ -1,0 +1,17 @@
+{
+  "version": "2025-11-01",
+  "sets": {
+    "Tokens": {
+      "sources": [
+        {
+          "$ref": "Tokens/wb-bridge.dtcg.tokens.json"
+        }
+      ]
+    }
+  },
+  "resolutionOrder": [
+    {
+      "$ref": "#/sets/Tokens"
+    }
+  ]
+}
