@@ -13,10 +13,24 @@
   --color-brand-soft: #5E6AD2;
   --color-brand-dim: #16172B;
   --color-brand-ink: #A8A8FF;
+  --color-brand-deep: #4B4BD8;
+  --color-border-strong: #5E6570;
   --color-ok: #27A644;
   --color-warn: #F5A623;
   --color-on-brand: #FFFFFF;
   --color-on-solid: #08090A;
+  --color-semantic-text-primary: var(--color-text-1);
+  --color-semantic-text-secondary: var(--color-text-2);
+  --color-semantic-text-tertiary: var(--color-text-3);
+  --color-semantic-text-link: var(--color-brand-ink);
+  --color-semantic-text-on-action: var(--color-on-brand);
+  --color-semantic-surface-page: var(--color-bg);
+  --color-semantic-surface-card: var(--color-surface);
+  --color-semantic-surface-raised: var(--color-surface-2);
+  --color-semantic-action-primary: var(--color-brand-deep);
+  --color-semantic-border-default: var(--color-line);
+  --color-semantic-border-strong: var(--color-border-strong);
+  --color-semantic-border-focus: var(--color-brand-ink);
   --spacing-s1: 4px;
   --spacing-s2: 8px;
   --spacing-s3: 12px;
@@ -45,4 +59,19 @@
   --leading-display: 1.05px;
   --leading-title: 1.15px;
   --leading-body: 1.5px;
+  --leading-prose: 1.7px;
+}
+
+:root {
+  --layout-container: 1200px;
+  --layout-nav-h: 56px;
+  --layout-tap: 44px;
+  --layout-hairline: 1px;
+  --layout-dot: 7px;
+  --layout-icon-sm: 6px;
+  --font-size-web-h1-min: 25px;
+  --font-size-web-h1-max: 44px;
+  --font-size-web-h2-min: 21px;
+  --font-size-web-h2-max: 28px;
+  --font-size-web-nav-btn: 13px;
 }

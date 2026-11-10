@@ -5,9 +5,9 @@
   "screens": [
     {
       "id": "0:5",
-      "name": "02 架构图 Architecture",
-      "width": 1240,
-      "height": 648,
+      "name": "03 Hero 图",
+      "width": 1200,
+      "height": 520,
       "componentRefs": [],
       "topLevelSections": 0
     }

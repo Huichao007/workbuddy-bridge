@@ -618,15 +618,16 @@
 
         <figure class="figure">
           <img
-            src="assets/02-architecture.png"
-            alt="架构图：WorkBuddy 桌面端积分池经本机回环桥接（127.0.0.1:18490），分别供 OpenCode 与 Codex CLI 使用；国内版与国际版各占一个端口。"
-            width="1240"
-            height="648"
+            src="assets/hero-diagram.png"
+            alt="一张图：同一份 WorkBuddy 积分池经本机回环桥接（127.0.0.1:18490），同时供 OpenCode（chat/completions）和 Codex CLI（responses）使用，两边都能跑通。"
+            width="1600"
+            height="693"
             loading="lazy"
             decoding="async"
           />
           <figcaption>
-            同一份积分池，两个客户端各拿一组模型。国内版与国际版是两个独立积分池，各自一条端口。
+            左边是你在 OpenCode 里敲的命令，右边是你在 Codex
+            里敲的命令，中间是同一口积分池。
           </figcaption>
         </figure>
 

@@ -2,17 +2,17 @@
   "name": "wb-bridge",
   "fig": "D:\\projects\\workbuddy-bridge\\design\\wb-bridge.fig",
   "platform": "web",
-  "generatedAt": "2026-11-10T05:22:51.351Z",
+  "generatedAt": "2026-11-10T05:51:39.852Z",
   "screens": [
     {
       "id": "0:5",
-      "name": "02 架构图 Architecture",
-      "width": 1240,
-      "height": 648,
+      "name": "03 Hero 图",
+      "width": 1200,
+      "height": 520,
       "files": {
-        "png": "screens/02-architecture.png",
-        "html": "screens/02-architecture.html",
-        "jsx": "screens/02-architecture.jsx"
+        "png": "screens/03-hero.png",
+        "html": "screens/03-hero.html",
+        "jsx": "screens/03-hero.jsx"
       }
     }
   ],
@@ -25,6 +25,6 @@
   },
   "components": 0,
   "lint": {
-    "total": 133
+    "total": 174
   }
 }

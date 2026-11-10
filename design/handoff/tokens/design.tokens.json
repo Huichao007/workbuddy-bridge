@@ -280,6 +280,46 @@
         }
       }
     },
+    "brand-deep": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.294118,
+          0.294118,
+          0.847059
+        ],
+        "alpha": 1,
+        "hex": "#4b4bd8"
+      },
+      "$extensions": {
+        "dev.openpencil": {
+          "scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      }
+    },
+    "border-strong": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.368627,
+          0.396078,
+          0.439216
+        ],
+        "alpha": 1,
+        "hex": "#5e6570"
+      },
+      "$extensions": {
+        "dev.openpencil": {
+          "scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      }
+    },
     "ok": {
       "$type": "color",
       "$value": {
@@ -357,6 +397,148 @@
           "scopes": [
             "ALL_SCOPES"
           ]
+        }
+      }
+    }
+  },
+  "semantic": {
+    "text": {
+      "primary": {
+        "$type": "color",
+        "$value": "{color.text-1}",
+        "$extensions": {
+          "dev.openpencil": {
+            "scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        }
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{color.text-2}",
+        "$extensions": {
+          "dev.openpencil": {
+            "scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        }
+      },
+      "tertiary": {
+        "$type": "color",
+        "$value": "{color.text-3}",
+        "$extensions": {
+          "dev.openpencil": {
+            "scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        }
+      },
+      "link": {
+        "$type": "color",
+        "$value": "{color.brand-ink}",
+        "$extensions": {
+          "dev.openpencil": {
+            "scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        }
+      },
+      "on-action": {
+        "$type": "color",
+        "$value": "{color.on-brand}",
+        "$extensions": {
+          "dev.openpencil": {
+            "scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        }
+      }
+    },
+    "surface": {
+      "page": {
+        "$type": "color",
+        "$value": "{color.bg}",
+        "$extensions": {
+          "dev.openpencil": {
+            "scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        }
+      },
+      "card": {
+        "$type": "color",
+        "$value": "{color.surface}",
+        "$extensions": {
+          "dev.openpencil": {
+            "scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        }
+      },
+      "raised": {
+        "$type": "color",
+        "$value": "{color.surface-2}",
+        "$extensions": {
+          "dev.openpencil": {
+            "scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        }
+      }
+    },
+    "action": {
+      "primary": {
+        "$type": "color",
+        "$value": "{color.brand-deep}",
+        "$extensions": {
+          "dev.openpencil": {
+            "scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        }
+      }
+    },
+    "border": {
+      "default": {
+        "$type": "color",
+        "$value": "{color.line}",
+        "$extensions": {
+          "dev.openpencil": {
+            "scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        }
+      },
+      "strong": {
+        "$type": "color",
+        "$value": "{color.border-strong}",
+        "$extensions": {
+          "dev.openpencil": {
+            "scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        }
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{color.brand-ink}",
+        "$extensions": {
+          "dev.openpencil": {
+            "scopes": [
+              "ALL_SCOPES"
+            ]
+          }
         }
       }
     }
@@ -750,6 +932,178 @@
       "$type": "dimension",
       "$value": {
         "value": 1.5,
+        "unit": "px"
+      },
+      "$extensions": {
+        "dev.openpencil": {
+          "scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      }
+    },
+    "prose": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.7,
+        "unit": "px"
+      },
+      "$extensions": {
+        "dev.openpencil": {
+          "scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      }
+    }
+  },
+  "layout": {
+    "container": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1200,
+        "unit": "px"
+      },
+      "$extensions": {
+        "dev.openpencil": {
+          "scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      }
+    },
+    "nav-h": {
+      "$type": "dimension",
+      "$value": {
+        "value": 56,
+        "unit": "px"
+      },
+      "$extensions": {
+        "dev.openpencil": {
+          "scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      }
+    },
+    "tap": {
+      "$type": "dimension",
+      "$value": {
+        "value": 44,
+        "unit": "px"
+      },
+      "$extensions": {
+        "dev.openpencil": {
+          "scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      }
+    },
+    "hairline": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "px"
+      },
+      "$extensions": {
+        "dev.openpencil": {
+          "scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      }
+    },
+    "dot": {
+      "$type": "dimension",
+      "$value": {
+        "value": 7,
+        "unit": "px"
+      },
+      "$extensions": {
+        "dev.openpencil": {
+          "scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      }
+    },
+    "icon-sm": {
+      "$type": "dimension",
+      "$value": {
+        "value": 6,
+        "unit": "px"
+      },
+      "$extensions": {
+        "dev.openpencil": {
+          "scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      }
+    }
+  },
+  "font-size-web": {
+    "h1-min": {
+      "$type": "dimension",
+      "$value": {
+        "value": 25,
+        "unit": "px"
+      },
+      "$extensions": {
+        "dev.openpencil": {
+          "scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      }
+    },
+    "h1-max": {
+      "$type": "dimension",
+      "$value": {
+        "value": 44,
+        "unit": "px"
+      },
+      "$extensions": {
+        "dev.openpencil": {
+          "scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      }
+    },
+    "h2-min": {
+      "$type": "dimension",
+      "$value": {
+        "value": 21,
+        "unit": "px"
+      },
+      "$extensions": {
+        "dev.openpencil": {
+          "scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      }
+    },
+    "h2-max": {
+      "$type": "dimension",
+      "$value": {
+        "value": 28,
+        "unit": "px"
+      },
+      "$extensions": {
+        "dev.openpencil": {
+          "scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      }
+    },
+    "nav-btn": {
+      "$type": "dimension",
+      "$value": {
+        "value": 13,
         "unit": "px"
       },
       "$extensions": {

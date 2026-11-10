@@ -1,13 +1,13 @@
 # wb-bridge · 设计交接（网站）
 
-> 生成于 2026-11-10T05:22:51.351Z · 设计稿 `D:\projects\workbuddy-bridge\design\wb-bridge.fig`
+> 生成于 2026-11-10T05:51:39.852Z · 设计稿 `D:\projects\workbuddy-bridge\design\wb-bridge.fig`
 > 本目录由 `design-system/design.mjs handoff` 生成，可重复执行；改设计稿后重新生成即可。
 
 ## 1. 屏清单
 
 | 屏 | 尺寸 | 视觉稿 | HTML 预览 | JSX |
 | --- | --- | --- | --- | --- |
-| 02 架构图 Architecture | 1240×648 | [png](screens/02-architecture.png) | [html](screens/02-architecture.html) | [jsx](screens/02-architecture.jsx) |
+| 03 Hero 图 | 1200×520 | [png](screens/03-hero.png) | [html](screens/03-hero.html) | [jsx](screens/03-hero.jsx) |
 
 ## 2. 设计变量（唯一来源）
 
@@ -31,10 +31,24 @@ CSS 变量：`tokens/tokens.css`；小程序：`tokens/tokens.wxss`（已 px→r
 | `--color-brand-soft` | #5E6AD2 |
 | `--color-brand-dim` | #16172B |
 | `--color-brand-ink` | #A8A8FF |
+| `--color-brand-deep` | #4B4BD8 |
+| `--color-border-strong` | #5E6570 |
 | `--color-ok` | #27A644 |
 | `--color-warn` | #F5A623 |
 | `--color-on-brand` | #FFFFFF |
 | `--color-on-solid` | #08090A |
+| `--color-semantic-text-primary` | var(--color-text-1) |
+| `--color-semantic-text-secondary` | var(--color-text-2) |
+| `--color-semantic-text-tertiary` | var(--color-text-3) |
+| `--color-semantic-text-link` | var(--color-brand-ink) |
+| `--color-semantic-text-on-action` | var(--color-on-brand) |
+| `--color-semantic-surface-page` | var(--color-bg) |
+| `--color-semantic-surface-card` | var(--color-surface) |
+| `--color-semantic-surface-raised` | var(--color-surface-2) |
+| `--color-semantic-action-primary` | var(--color-brand-deep) |
+| `--color-semantic-border-default` | var(--color-line) |
+| `--color-semantic-border-strong` | var(--color-border-strong) |
+| `--color-semantic-border-focus` | var(--color-brand-ink) |
 
 ### 间距 / 圆角 / 字号
 
@@ -68,6 +82,7 @@ CSS 变量：`tokens/tokens.css`；小程序：`tokens/tokens.wxss`（已 px→r
 | `--leading-display` | 1.05px |
 | `--leading-title` | 1.15px |
 | `--leading-body` | 1.5px |
+| `--leading-prose` | 1.7px |
 
 ## 3. 组件（设计稿里的可复用件）
 
@@ -82,16 +97,16 @@ CSS 变量：`tokens/tokens.css`；小程序：`tokens/tokens.wxss`（已 px→r
 
 ## 5. lint 体检
 
-error 0 · warning 9 · info 124（共 133 条，完整列表见 `lint.json`）
+error 0 · warning 26 · info 148（共 174 条，完整列表见 `lint.json`）
 
+- [warning] min-text-size: Text size 10px is below minimum 12px
+- [warning] min-text-size: Text size 10px is below minimum 12px
+- [warning] min-text-size: Text size 10px is below minimum 12px
 - [warning] min-text-size: Text size 11px is below minimum 12px
 - [warning] min-text-size: Text size 11px is below minimum 12px
 - [warning] min-text-size: Text size 11px is below minimum 12px
 - [warning] min-text-size: Text size 11px is below minimum 12px
-- [warning] min-text-size: Text size 11px is below minimum 12px
-- [warning] min-text-size: Text size 11px is below minimum 12px
-- [warning] min-text-size: Text size 11px is below minimum 12px
-- [warning] min-text-size: Text size 11px is below minimum 12px
+- [warning] min-text-size: Text size 10px is below minimum 12px
 
 > 无 error，可进入开发。
 

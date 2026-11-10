@@ -8,7 +8,7 @@
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
+        "03 Hero 图",
         "Frame"
       ],
       "suggest": "Rename to describe the layer purpose",
@@ -17,56 +17,32 @@
       }
     },
     {
-      "ruleId": "consistent-spacing",
+      "ruleId": "no-default-names",
       "severity": "info",
-      "message": "gap 14px is not in spacing scale",
-      "nodeId": "0:6",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:7",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
+        "03 Hero 图",
+        "Frame",
         "Frame"
       ],
-      "suggest": "Use a spacing token or a multiple of 4px",
+      "suggest": "Rename to describe the layer purpose",
       "data": {
-        "property": "itemSpacing",
-        "value": 14,
-        "base": 4
-      },
-      "suggestions": [
-        {
-          "kind": "set",
-          "changes": {
-            "itemSpacing": 16
-          }
-        }
-      ]
-    },
-    {
-      "ruleId": "pixel-perfect",
-      "severity": "info",
-      "message": "Subpixel values: height: 101.39999389648438",
-      "nodeId": "0:6",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Frame"
-      ],
-      "suggest": "Round to whole pixels for crisp rendering",
-      "data": {
-        "height": 101.39999389648438
+        "name": "Frame"
       }
     },
     {
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:7",
+      "nodeId": "0:8",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Text"
       ],
@@ -79,11 +55,12 @@
       "ruleId": "text-style-required",
       "severity": "info",
       "message": "Text layer without typography variable bindings",
-      "nodeId": "0:7",
+      "nodeId": "0:8",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Text"
       ],
@@ -92,18 +69,19 @@
     {
       "ruleId": "min-text-size",
       "severity": "warning",
-      "message": "Text size 11px is below minimum 12px",
-      "nodeId": "0:7",
+      "message": "Text size 10px is below minimum 12px",
+      "nodeId": "0:8",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Text"
       ],
       "suggest": "Increase to at least 12px for readability",
       "data": {
-        "fontSize": 11,
+        "fontSize": 10,
         "minSize": 12
       },
       "suggestions": [
@@ -119,11 +97,12 @@
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:8",
+      "nodeId": "0:9",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Text"
       ],
@@ -136,11 +115,12 @@
       "ruleId": "text-style-required",
       "severity": "info",
       "message": "Text layer without typography variable bindings",
-      "nodeId": "0:8",
+      "nodeId": "0:9",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Text"
       ],
@@ -149,251 +129,30 @@
     {
       "ruleId": "no-default-names",
       "severity": "info",
-      "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:9",
-      "nodeName": "Text",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:10",
+      "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
+        "03 Hero 图",
         "Frame",
-        "Text"
+        "Frame"
       ],
       "suggest": "Rename to describe the layer purpose",
       "data": {
-        "name": "Text"
-      }
-    },
-    {
-      "ruleId": "text-style-required",
-      "severity": "info",
-      "message": "Text layer without typography variable bindings",
-      "nodeId": "0:9",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Bind font size or font family to a shared text token when possible"
-    },
-    {
-      "ruleId": "pixel-perfect",
-      "severity": "info",
-      "message": "Subpixel values: height: 1.7000000476837158",
-      "nodeId": "0:9",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Round to whole pixels for crisp rendering",
-      "data": {
-        "height": 1.7000000476837158
+        "name": "Frame"
       }
     },
     {
       "ruleId": "no-default-names",
       "severity": "info",
-      "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:10",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Text"
-      }
-    },
-    {
-      "ruleId": "text-style-required",
-      "severity": "info",
-      "message": "Text layer without typography variable bindings",
-      "nodeId": "0:10",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Bind font size or font family to a shared text token when possible"
-    },
-    {
-      "ruleId": "pixel-perfect",
-      "severity": "info",
-      "message": "Subpixel values: y: 99.69999694824219, height: 1.7000000476837158",
-      "nodeId": "0:10",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Round to whole pixels for crisp rendering",
-      "data": {
-        "y": 99.69999694824219,
-        "height": 1.7000000476837158
-      }
-    },
-    {
-      "ruleId": "pixel-perfect",
-      "severity": "info",
-      "message": "Subpixel values: y: 205.39999389648438",
+      "message": "Default layer name \"Frame\" is not descriptive",
       "nodeId": "0:11",
-      "nodeName": "Diagram",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram"
-      ],
-      "suggest": "Round to whole pixels for crisp rendering",
-      "data": {
-        "y": 205.39999389648438
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:12",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "consistent-spacing",
-      "severity": "info",
-      "message": "paddingTop 22px is not in spacing scale",
-      "nodeId": "0:12",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame"
-      ],
-      "suggest": "Use a spacing token or a multiple of 4px",
-      "data": {
-        "property": "paddingTop",
-        "value": 22,
-        "base": 4
-      },
-      "suggestions": [
-        {
-          "kind": "set",
-          "changes": {
-            "paddingTop": 24
-          }
-        }
-      ]
-    },
-    {
-      "ruleId": "consistent-spacing",
-      "severity": "info",
-      "message": "paddingRight 22px is not in spacing scale",
-      "nodeId": "0:12",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame"
-      ],
-      "suggest": "Use a spacing token or a multiple of 4px",
-      "data": {
-        "property": "paddingRight",
-        "value": 22,
-        "base": 4
-      },
-      "suggestions": [
-        {
-          "kind": "set",
-          "changes": {
-            "paddingRight": 24
-          }
-        }
-      ]
-    },
-    {
-      "ruleId": "consistent-spacing",
-      "severity": "info",
-      "message": "paddingBottom 22px is not in spacing scale",
-      "nodeId": "0:12",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame"
-      ],
-      "suggest": "Use a spacing token or a multiple of 4px",
-      "data": {
-        "property": "paddingBottom",
-        "value": 22,
-        "base": 4
-      },
-      "suggestions": [
-        {
-          "kind": "set",
-          "changes": {
-            "paddingBottom": 24
-          }
-        }
-      ]
-    },
-    {
-      "ruleId": "consistent-spacing",
-      "severity": "info",
-      "message": "paddingLeft 22px is not in spacing scale",
-      "nodeId": "0:12",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame"
-      ],
-      "suggest": "Use a spacing token or a multiple of 4px",
-      "data": {
-        "property": "paddingLeft",
-        "value": 22,
-        "base": 4
-      },
-      "suggestions": [
-        {
-          "kind": "set",
-          "changes": {
-            "paddingLeft": 24
-          }
-        }
-      ]
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:13",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Frame"
       ],
@@ -406,12 +165,31 @@
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:14",
+      "nodeId": "0:12",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:13",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Frame",
         "Text"
@@ -425,12 +203,12 @@
       "ruleId": "text-style-required",
       "severity": "info",
       "message": "Text layer without typography variable bindings",
-      "nodeId": "0:14",
+      "nodeId": "0:13",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Frame",
         "Text"
@@ -440,20 +218,20 @@
     {
       "ruleId": "min-text-size",
       "severity": "warning",
-      "message": "Text size 11px is below minimum 12px",
-      "nodeId": "0:14",
+      "message": "Text size 10px is below minimum 12px",
+      "nodeId": "0:13",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Frame",
         "Text"
       ],
       "suggest": "Increase to at least 12px for readability",
       "data": {
-        "fontSize": 11,
+        "fontSize": 10,
         "minSize": 12
       },
       "suggestions": [
@@ -468,13 +246,31 @@
     {
       "ruleId": "no-default-names",
       "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:14",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
       "message": "Default layer name \"Text\" is not descriptive",
       "nodeId": "0:15",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Frame",
         "Text"
@@ -483,22 +279,6 @@
       "data": {
         "name": "Text"
       }
-    },
-    {
-      "ruleId": "text-style-required",
-      "severity": "info",
-      "message": "Text layer without typography variable bindings",
-      "nodeId": "0:15",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Bind font size or font family to a shared text token when possible"
     },
     {
       "ruleId": "no-default-names",
@@ -508,8 +288,8 @@
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Frame",
         "Text"
@@ -527,13 +307,41 @@
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Frame",
         "Text"
       ],
       "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 10px is below minimum 12px",
+      "nodeId": "0:16",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 10,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
     },
     {
       "ruleId": "no-default-names",
@@ -543,8 +351,39 @@
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:18",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:19",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
         "Frame",
         "Frame"
       ],
@@ -556,90 +395,19 @@
     {
       "ruleId": "pixel-perfect",
       "severity": "info",
-      "message": "Subpixel values: y: 123.5",
-      "nodeId": "0:17",
+      "message": "Subpixel values: y: 68.5",
+      "nodeId": "0:19",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
         "Frame"
       ],
       "suggest": "Round to whole pixels for crisp rendering",
       "data": {
-        "y": 123.5
+        "y": 68.5
       }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:18",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Text"
-      }
-    },
-    {
-      "ruleId": "text-style-required",
-      "severity": "info",
-      "message": "Text layer without typography variable bindings",
-      "nodeId": "0:18",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Bind font size or font family to a shared text token when possible"
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:19",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Text"
-      }
-    },
-    {
-      "ruleId": "text-style-required",
-      "severity": "info",
-      "message": "Text layer without typography variable bindings",
-      "nodeId": "0:19",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Bind font size or font family to a shared text token when possible"
     },
     {
       "ruleId": "no-default-names",
@@ -649,8 +417,8 @@
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Frame"
       ],
@@ -667,354 +435,8 @@
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:22",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:23",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:24",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Text"
-      }
-    },
-    {
-      "ruleId": "no-deeply-nested",
-      "severity": "info",
-      "message": "Layer nested 7 levels deep (max 6)",
-      "nodeId": "0:24",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Flatten structure or extract a component",
-      "data": {
-        "depth": 7,
-        "maxDepth": 6
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:25",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Text"
-      }
-    },
-    {
-      "ruleId": "text-style-required",
-      "severity": "info",
-      "message": "Text layer without typography variable bindings",
-      "nodeId": "0:25",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Bind font size or font family to a shared text token when possible"
-    },
-    {
-      "ruleId": "min-text-size",
-      "severity": "warning",
-      "message": "Text size 11px is below minimum 12px",
-      "nodeId": "0:25",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Increase to at least 12px for readability",
-      "data": {
-        "fontSize": 11,
-        "minSize": 12
-      },
-      "suggestions": [
-        {
-          "kind": "set",
-          "changes": {
-            "fontSize": 12
-          }
-        }
-      ]
-    },
-    {
-      "ruleId": "no-deeply-nested",
-      "severity": "info",
-      "message": "Layer nested 7 levels deep (max 6)",
-      "nodeId": "0:25",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Flatten structure or extract a component",
-      "data": {
-        "depth": 7,
-        "maxDepth": 6
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:26",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:27",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Text"
-      }
-    },
-    {
-      "ruleId": "no-deeply-nested",
-      "severity": "info",
-      "message": "Layer nested 7 levels deep (max 6)",
-      "nodeId": "0:27",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Flatten structure or extract a component",
-      "data": {
-        "depth": 7,
-        "maxDepth": 6
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:28",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Text"
-      }
-    },
-    {
-      "ruleId": "text-style-required",
-      "severity": "info",
-      "message": "Text layer without typography variable bindings",
-      "nodeId": "0:28",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Bind font size or font family to a shared text token when possible"
-    },
-    {
-      "ruleId": "min-text-size",
-      "severity": "warning",
-      "message": "Text size 11px is below minimum 12px",
-      "nodeId": "0:28",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Increase to at least 12px for readability",
-      "data": {
-        "fontSize": 11,
-        "minSize": 12
-      },
-      "suggestions": [
-        {
-          "kind": "set",
-          "changes": {
-            "fontSize": 12
-          }
-        }
-      ]
-    },
-    {
-      "ruleId": "no-deeply-nested",
-      "severity": "info",
-      "message": "Layer nested 7 levels deep (max 6)",
-      "nodeId": "0:28",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Flatten structure or extract a component",
-      "data": {
-        "depth": 7,
-        "maxDepth": 6
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:29",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
         "Frame",
         "Frame",
         "Frame"
@@ -1027,40 +449,58 @@
     {
       "ruleId": "consistent-radius",
       "severity": "info",
-      "message": "Corner radius 5px is not in scale",
-      "nodeId": "0:29",
+      "message": "Corner radius 999px is not in scale",
+      "nodeId": "0:21",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Frame",
         "Frame"
       ],
       "suggest": "Use a radius token or a scale value",
       "data": {
-        "radius": 5
+        "radius": 999
       },
       "suggestions": [
         {
           "kind": "set",
           "changes": {
-            "cornerRadius": 6
+            "cornerRadius": 9999
           }
         }
       ]
     },
     {
+      "ruleId": "pixel-perfect",
+      "severity": "info",
+      "message": "Subpixel values: y: 10.5",
+      "nodeId": "0:21",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Round to whole pixels for crisp rendering",
+      "data": {
+        "y": 10.5
+      }
+    },
+    {
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:30",
+      "nodeId": "0:22",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Frame",
@@ -1075,13 +515,45 @@
       "ruleId": "text-style-required",
       "severity": "info",
       "message": "Text layer without typography variable bindings",
-      "nodeId": "0:30",
+      "nodeId": "0:22",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:23",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:23",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Text"
@@ -1092,13 +564,11 @@
       "ruleId": "min-text-size",
       "severity": "warning",
       "message": "Text size 11px is below minimum 12px",
-      "nodeId": "0:30",
+      "nodeId": "0:23",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Text"
@@ -1118,88 +588,16 @@
       ]
     },
     {
-      "ruleId": "pixel-perfect",
-      "severity": "info",
-      "message": "Subpixel values: x: 68.5",
-      "nodeId": "0:30",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Round to whole pixels for crisp rendering",
-      "data": {
-        "x": 68.5
-      }
-    },
-    {
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:31",
+      "nodeId": "0:24",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:32",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "pixel-perfect",
-      "severity": "info",
-      "message": "Subpixel values: y: 169.5",
-      "nodeId": "0:32",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
         "Frame",
-        "Frame"
-      ],
-      "suggest": "Round to whole pixels for crisp rendering",
-      "data": {
-        "y": 169.5
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:33",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
         "Frame"
       ],
       "suggest": "Rename to describe the layer purpose",
@@ -1210,221 +608,152 @@
     {
       "ruleId": "consistent-spacing",
       "severity": "info",
-      "message": "gap 10px is not in spacing scale",
-      "nodeId": "0:33",
+      "message": "paddingTop 14px is not in spacing scale",
+      "nodeId": "0:24",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
         "Frame"
       ],
       "suggest": "Use a spacing token or a multiple of 4px",
       "data": {
-        "property": "itemSpacing",
-        "value": 10,
+        "property": "paddingTop",
+        "value": 14,
         "base": 4
       },
       "suggestions": [
         {
           "kind": "set",
           "changes": {
-            "itemSpacing": 12
+            "paddingTop": 16
           }
         }
       ]
     },
     {
-      "ruleId": "no-default-names",
+      "ruleId": "consistent-spacing",
       "severity": "info",
-      "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:34",
-      "nodeName": "Text",
+      "message": "paddingRight 14px is not in spacing scale",
+      "nodeId": "0:24",
+      "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
-        "Text"
+        "Frame",
+        "Frame"
       ],
-      "suggest": "Rename to describe the layer purpose",
+      "suggest": "Use a spacing token or a multiple of 4px",
       "data": {
-        "name": "Text"
-      }
-    },
-    {
-      "ruleId": "text-style-required",
-      "severity": "info",
-      "message": "Text layer without typography variable bindings",
-      "nodeId": "0:34",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Bind font size or font family to a shared text token when possible"
-    },
-    {
-      "ruleId": "min-text-size",
-      "severity": "warning",
-      "message": "Text size 11px is below minimum 12px",
-      "nodeId": "0:34",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Increase to at least 12px for readability",
-      "data": {
-        "fontSize": 11,
-        "minSize": 12
+        "property": "paddingRight",
+        "value": 14,
+        "base": 4
       },
       "suggestions": [
         {
           "kind": "set",
           "changes": {
-            "fontSize": 12
+            "paddingRight": 16
           }
         }
       ]
     },
     {
-      "ruleId": "pixel-perfect",
+      "ruleId": "consistent-spacing",
       "severity": "info",
-      "message": "Subpixel values: y: 55.650001525878906",
-      "nodeId": "0:34",
-      "nodeName": "Text",
+      "message": "paddingBottom 14px is not in spacing scale",
+      "nodeId": "0:24",
+      "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
-        "Text"
+        "Frame",
+        "Frame"
       ],
-      "suggest": "Round to whole pixels for crisp rendering",
+      "suggest": "Use a spacing token or a multiple of 4px",
       "data": {
-        "y": 55.650001525878906
-      }
+        "property": "paddingBottom",
+        "value": 14,
+        "base": 4
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "paddingBottom": 16
+          }
+        }
+      ]
     },
     {
-      "ruleId": "no-default-names",
+      "ruleId": "consistent-spacing",
       "severity": "info",
-      "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:35",
-      "nodeName": "Text",
+      "message": "paddingLeft 14px is not in spacing scale",
+      "nodeId": "0:24",
+      "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
-        "Text"
+        "Frame",
+        "Frame"
       ],
-      "suggest": "Rename to describe the layer purpose",
+      "suggest": "Use a spacing token or a multiple of 4px",
       "data": {
-        "name": "Text"
-      }
+        "property": "paddingLeft",
+        "value": 14,
+        "base": 4
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "paddingLeft": 16
+          }
+        }
+      ]
     },
     {
-      "ruleId": "text-style-required",
+      "ruleId": "consistent-radius",
       "severity": "info",
-      "message": "Text layer without typography variable bindings",
-      "nodeId": "0:35",
-      "nodeName": "Text",
+      "message": "Corner radius 10px is not in scale",
+      "nodeId": "0:24",
+      "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
-        "Text"
-      ],
-      "suggest": "Bind font size or font family to a shared text token when possible"
-    },
-    {
-      "ruleId": "pixel-perfect",
-      "severity": "info",
-      "message": "Subpixel values: y: 81.6500015258789",
-      "nodeId": "0:35",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
         "Frame",
-        "Text"
+        "Frame"
       ],
-      "suggest": "Round to whole pixels for crisp rendering",
+      "suggest": "Use a radius token or a scale value",
       "data": {
-        "y": 81.6500015258789
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:36",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Text"
-      }
-    },
-    {
-      "ruleId": "text-style-required",
-      "severity": "info",
-      "message": "Text layer without typography variable bindings",
-      "nodeId": "0:36",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Bind font size or font family to a shared text token when possible"
-    },
-    {
-      "ruleId": "pixel-perfect",
-      "severity": "info",
-      "message": "Subpixel values: y: 115.6500015258789, height: 1.7000000476837158",
-      "nodeId": "0:36",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Round to whole pixels for crisp rendering",
-      "data": {
-        "y": 115.6500015258789,
-        "height": 1.7000000476837158
-      }
+        "radius": 10
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "cornerRadius": 12
+          }
+        }
+      ]
     },
     {
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:37",
+      "nodeId": "0:25",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
         "Frame",
         "Frame"
       ],
@@ -1437,12 +766,13 @@
       "ruleId": "consistent-spacing",
       "severity": "info",
       "message": "gap 6px is not in spacing scale",
-      "nodeId": "0:37",
+      "nodeId": "0:25",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
         "Frame",
         "Frame"
       ],
@@ -1462,98 +792,16 @@
       ]
     },
     {
-      "ruleId": "pixel-perfect",
-      "severity": "info",
-      "message": "Subpixel values: y: 127.3499984741211",
-      "nodeId": "0:37",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Round to whole pixels for crisp rendering",
-      "data": {
-        "y": 127.3499984741211
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:38",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "consistent-radius",
-      "severity": "info",
-      "message": "Corner radius 999px is not in scale",
-      "nodeId": "0:38",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Use a radius token or a scale value",
-      "data": {
-        "radius": 999
-      },
-      "suggestions": [
-        {
-          "kind": "set",
-          "changes": {
-            "cornerRadius": 9999
-          }
-        }
-      ]
-    },
-    {
-      "ruleId": "pixel-perfect",
-      "severity": "info",
-      "message": "Subpixel values: y: 3.5",
-      "nodeId": "0:38",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Round to whole pixels for crisp rendering",
-      "data": {
-        "y": 3.5
-      }
-    },
-    {
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:39",
+      "nodeId": "0:26",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
         "Frame",
         "Frame",
         "Text"
@@ -1564,31 +812,16 @@
       }
     },
     {
-      "ruleId": "text-style-required",
-      "severity": "info",
-      "message": "Text layer without typography variable bindings",
-      "nodeId": "0:39",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Bind font size or font family to a shared text token when possible"
-    },
-    {
       "ruleId": "min-text-size",
       "severity": "warning",
       "message": "Text size 11px is below minimum 12px",
-      "nodeId": "0:39",
+      "nodeId": "0:26",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
         "Frame",
         "Frame",
         "Text"
@@ -1603,6 +836,624 @@
           "kind": "set",
           "changes": {
             "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:27",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:27",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 11px is below minimum 12px",
+      "nodeId": "0:27",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 11,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:28",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:28",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 11px is below minimum 12px",
+      "nodeId": "0:28",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 11,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:29",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:30",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "consistent-spacing",
+      "severity": "info",
+      "message": "gap 6px is not in spacing scale",
+      "nodeId": "0:30",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a spacing token or a multiple of 4px",
+      "data": {
+        "property": "itemSpacing",
+        "value": 6,
+        "base": 4
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "itemSpacing": 8
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:31",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 10px is below minimum 12px",
+      "nodeId": "0:31",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 10,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "pixel-perfect",
+      "severity": "info",
+      "message": "Subpixel values: y: 1.5",
+      "nodeId": "0:31",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Round to whole pixels for crisp rendering",
+      "data": {
+        "y": 1.5
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:32",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:32",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:33",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:33",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 11px is below minimum 12px",
+      "nodeId": "0:33",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 11,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:34",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "pixel-perfect",
+      "severity": "info",
+      "message": "Subpixel values: y: 155.5",
+      "nodeId": "0:34",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Round to whole pixels for crisp rendering",
+      "data": {
+        "y": 155.5
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:35",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "consistent-spacing",
+      "severity": "info",
+      "message": "gap 3px is not in spacing scale",
+      "nodeId": "0:35",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a spacing token or a multiple of 4px",
+      "data": {
+        "property": "itemSpacing",
+        "value": 3,
+        "base": 4
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "itemSpacing": 4
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:36",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "pixel-perfect",
+      "severity": "info",
+      "message": "Subpixel values: y: 6.5",
+      "nodeId": "0:36",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Round to whole pixels for crisp rendering",
+      "data": {
+        "y": 6.5
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:37",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "consistent-radius",
+      "severity": "info",
+      "message": "Corner radius 1px is not in scale",
+      "nodeId": "0:37",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a radius token or a scale value",
+      "data": {
+        "radius": 1
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "cornerRadius": 9999
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:38",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "consistent-radius",
+      "severity": "info",
+      "message": "Corner radius 1px is not in scale",
+      "nodeId": "0:38",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a radius token or a scale value",
+      "data": {
+        "radius": 1
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "cornerRadius": 9999
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:39",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "consistent-radius",
+      "severity": "info",
+      "message": "Corner radius 1px is not in scale",
+      "nodeId": "0:39",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a radius token or a scale value",
+      "data": {
+        "radius": 1
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "cornerRadius": 9999
           }
         }
       ]
@@ -1615,198 +1466,7 @@
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:41",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:42",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:43",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:44",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:45",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:46",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:47",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:48",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:49",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:50",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
+        "03 Hero 图",
         "Frame",
         "Frame"
       ],
@@ -1818,50 +1478,29 @@
     {
       "ruleId": "pixel-perfect",
       "severity": "info",
-      "message": "Subpixel values: y: 123.5",
-      "nodeId": "0:50",
+      "message": "Subpixel values: y: 57.5",
+      "nodeId": "0:40",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
+        "03 Hero 图",
         "Frame",
         "Frame"
       ],
       "suggest": "Round to whole pixels for crisp rendering",
       "data": {
-        "y": 123.5
+        "y": 57.5
       }
     },
     {
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:51",
+      "nodeId": "0:41",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:52",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Frame"
@@ -1874,49 +1513,77 @@
     {
       "ruleId": "no-default-names",
       "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:53",
-      "nodeName": "Frame",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:42",
+      "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
         "Frame",
-        "Frame"
+        "Frame",
+        "Text"
       ],
       "suggest": "Rename to describe the layer purpose",
       "data": {
-        "name": "Frame"
+        "name": "Text"
       }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:42",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 10px is below minimum 12px",
+      "nodeId": "0:42",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 10,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
     },
     {
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:54",
+      "nodeId": "0:43",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:55",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
         "Frame",
         "Frame"
       ],
@@ -1928,81 +1595,28 @@
     {
       "ruleId": "consistent-spacing",
       "severity": "info",
-      "message": "paddingTop 14px is not in spacing scale",
-      "nodeId": "0:55",
+      "message": "gap 5px is not in spacing scale",
+      "nodeId": "0:43",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
         "Frame",
         "Frame"
       ],
       "suggest": "Use a spacing token or a multiple of 4px",
       "data": {
-        "property": "paddingTop",
-        "value": 14,
+        "property": "itemSpacing",
+        "value": 5,
         "base": 4
       },
       "suggestions": [
         {
           "kind": "set",
           "changes": {
-            "paddingTop": 16
-          }
-        }
-      ]
-    },
-    {
-      "ruleId": "consistent-spacing",
-      "severity": "info",
-      "message": "paddingBottom 14px is not in spacing scale",
-      "nodeId": "0:55",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Use a spacing token or a multiple of 4px",
-      "data": {
-        "property": "paddingBottom",
-        "value": 14,
-        "base": 4
-      },
-      "suggestions": [
-        {
-          "kind": "set",
-          "changes": {
-            "paddingBottom": 16
-          }
-        }
-      ]
-    },
-    {
-      "ruleId": "consistent-radius",
-      "severity": "info",
-      "message": "Corner radius 10px is not in scale",
-      "nodeId": "0:55",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Use a radius token or a scale value",
-      "data": {
-        "radius": 10
-      },
-      "suggestions": [
-        {
-          "kind": "set",
-          "changes": {
-            "cornerRadius": 12
+            "itemSpacing": 4
           }
         }
       ]
@@ -2011,51 +1625,11 @@
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:56",
+      "nodeId": "0:44",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:57",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Rename to describe the layer purpose",
-      "data": {
-        "name": "Frame"
-      }
-    },
-    {
-      "ruleId": "no-default-names",
-      "severity": "info",
-      "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:58",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Frame",
@@ -2071,12 +1645,11 @@
       "ruleId": "consistent-radius",
       "severity": "info",
       "message": "Corner radius 999px is not in scale",
-      "nodeId": "0:58",
+      "nodeId": "0:44",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Frame",
@@ -2097,58 +1670,14 @@
       ]
     },
     {
-      "ruleId": "no-deeply-nested",
-      "severity": "info",
-      "message": "Layer nested 7 levels deep (max 6)",
-      "nodeId": "0:58",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Flatten structure or extract a component",
-      "data": {
-        "depth": 7,
-        "maxDepth": 6
-      }
-    },
-    {
-      "ruleId": "pixel-perfect",
-      "severity": "info",
-      "message": "Subpixel values: y: 7.5",
-      "nodeId": "0:58",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Round to whole pixels for crisp rendering",
-      "data": {
-        "y": 7.5
-      }
-    },
-    {
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:59",
+      "nodeId": "0:45",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Frame",
@@ -2164,12 +1693,11 @@
       "ruleId": "text-style-required",
       "severity": "info",
       "message": "Text layer without typography variable bindings",
-      "nodeId": "0:59",
+      "nodeId": "0:45",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Frame",
@@ -2179,37 +1707,89 @@
       "suggest": "Bind font size or font family to a shared text token when possible"
     },
     {
-      "ruleId": "no-deeply-nested",
-      "severity": "info",
-      "message": "Layer nested 7 levels deep (max 6)",
-      "nodeId": "0:59",
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 10px is below minimum 12px",
+      "nodeId": "0:45",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Frame",
         "Frame",
         "Text"
       ],
-      "suggest": "Flatten structure or extract a component",
+      "suggest": "Increase to at least 12px for readability",
       "data": {
-        "depth": 7,
-        "maxDepth": 6
+        "fontSize": 10,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:46",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
       }
+    },
+    {
+      "ruleId": "consistent-spacing",
+      "severity": "info",
+      "message": "gap 3px is not in spacing scale",
+      "nodeId": "0:46",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a spacing token or a multiple of 4px",
+      "data": {
+        "property": "itemSpacing",
+        "value": 3,
+        "base": 4
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "itemSpacing": 4
+          }
+        }
+      ]
     },
     {
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:60",
+      "nodeId": "0:47",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Frame",
@@ -2224,12 +1804,194 @@
       "ruleId": "text-style-required",
       "severity": "info",
       "message": "Text layer without typography variable bindings",
-      "nodeId": "0:60",
+      "nodeId": "0:47",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:48",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:48",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 10px is below minimum 12px",
+      "nodeId": "0:48",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 10,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:49",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:50",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "consistent-spacing",
+      "severity": "info",
+      "message": "gap 9px is not in spacing scale",
+      "nodeId": "0:50",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a spacing token or a multiple of 4px",
+      "data": {
+        "property": "itemSpacing",
+        "value": 9,
+        "base": 4
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "itemSpacing": 8
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:51",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:52",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:52",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Frame",
         "Frame",
@@ -2241,12 +2003,12 @@
       "ruleId": "min-text-size",
       "severity": "warning",
       "message": "Text size 11px is below minimum 12px",
-      "nodeId": "0:60",
+      "nodeId": "0:52",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Frame",
         "Frame",
@@ -2270,12 +2032,13 @@
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:61",
+      "nodeId": "0:53",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
         "Frame",
         "Frame",
         "Text"
@@ -2289,12 +2052,13 @@
       "ruleId": "text-style-required",
       "severity": "info",
       "message": "Text layer without typography variable bindings",
-      "nodeId": "0:61",
+      "nodeId": "0:53",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
         "Frame",
         "Frame",
         "Text"
@@ -2302,15 +2066,363 @@
       "suggest": "Bind font size or font family to a shared text token when possible"
     },
     {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 11px is below minimum 12px",
+      "nodeId": "0:53",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 11,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:62",
+      "nodeId": "0:54",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:55",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:55",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 11px is below minimum 12px",
+      "nodeId": "0:55",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 11,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:56",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:56",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 11px is below minimum 12px",
+      "nodeId": "0:56",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 11,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:57",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:58",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:58",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 11px is below minimum 12px",
+      "nodeId": "0:58",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 11,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:59",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 11px is below minimum 12px",
+      "nodeId": "0:59",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 11,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:60",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "pixel-perfect",
+      "severity": "info",
+      "message": "Subpixel values: y: 155.5",
+      "nodeId": "0:60",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Round to whole pixels for crisp rendering",
+      "data": {
+        "y": 155.5
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:61",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Frame"
       ],
@@ -2322,81 +2434,73 @@
     {
       "ruleId": "consistent-spacing",
       "severity": "info",
-      "message": "paddingTop 14px is not in spacing scale",
-      "nodeId": "0:62",
+      "message": "gap 3px is not in spacing scale",
+      "nodeId": "0:61",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Frame"
       ],
       "suggest": "Use a spacing token or a multiple of 4px",
       "data": {
-        "property": "paddingTop",
-        "value": 14,
+        "property": "itemSpacing",
+        "value": 3,
         "base": 4
       },
       "suggestions": [
         {
           "kind": "set",
           "changes": {
-            "paddingTop": 16
+            "itemSpacing": 4
           }
         }
       ]
     },
     {
-      "ruleId": "consistent-spacing",
+      "ruleId": "no-default-names",
       "severity": "info",
-      "message": "paddingBottom 14px is not in spacing scale",
+      "message": "Default layer name \"Frame\" is not descriptive",
       "nodeId": "0:62",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
         "Frame",
         "Frame"
       ],
-      "suggest": "Use a spacing token or a multiple of 4px",
+      "suggest": "Rename to describe the layer purpose",
       "data": {
-        "property": "paddingBottom",
-        "value": 14,
-        "base": 4
-      },
-      "suggestions": [
-        {
-          "kind": "set",
-          "changes": {
-            "paddingBottom": 16
-          }
-        }
-      ]
+        "name": "Frame"
+      }
     },
     {
       "ruleId": "consistent-radius",
       "severity": "info",
-      "message": "Corner radius 10px is not in scale",
+      "message": "Corner radius 1px is not in scale",
       "nodeId": "0:62",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
         "Frame",
         "Frame"
       ],
       "suggest": "Use a radius token or a scale value",
       "data": {
-        "radius": 10
+        "radius": 1
       },
       "suggestions": [
         {
           "kind": "set",
           "changes": {
-            "cornerRadius": 12
+            "cornerRadius": 9999
           }
         }
       ]
@@ -2409,8 +2513,8 @@
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Frame",
         "Frame"
@@ -2419,6 +2523,33 @@
       "data": {
         "name": "Frame"
       }
+    },
+    {
+      "ruleId": "consistent-radius",
+      "severity": "info",
+      "message": "Corner radius 1px is not in scale",
+      "nodeId": "0:63",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a radius token or a scale value",
+      "data": {
+        "radius": 1
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "cornerRadius": 9999
+          }
+        }
+      ]
     },
     {
       "ruleId": "no-default-names",
@@ -2428,9 +2559,108 @@
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
         "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "consistent-radius",
+      "severity": "info",
+      "message": "Corner radius 1px is not in scale",
+      "nodeId": "0:64",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a radius token or a scale value",
+      "data": {
+        "radius": 1
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "cornerRadius": 9999
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:65",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "pixel-perfect",
+      "severity": "info",
+      "message": "Subpixel values: y: 6.5",
+      "nodeId": "0:65",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Round to whole pixels for crisp rendering",
+      "data": {
+        "y": 6.5
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:66",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:67",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Frame"
@@ -2444,13 +2674,11 @@
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Frame\" is not descriptive",
-      "nodeId": "0:65",
+      "nodeId": "0:68",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Frame",
@@ -2465,13 +2693,11 @@
       "ruleId": "consistent-radius",
       "severity": "info",
       "message": "Corner radius 999px is not in scale",
-      "nodeId": "0:65",
+      "nodeId": "0:68",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Frame",
@@ -2491,38 +2717,14 @@
       ]
     },
     {
-      "ruleId": "no-deeply-nested",
-      "severity": "info",
-      "message": "Layer nested 7 levels deep (max 6)",
-      "nodeId": "0:65",
-      "nodeName": "Frame",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame"
-      ],
-      "suggest": "Flatten structure or extract a component",
-      "data": {
-        "depth": 7,
-        "maxDepth": 6
-      }
-    },
-    {
       "ruleId": "pixel-perfect",
       "severity": "info",
-      "message": "Subpixel values: y: 7.5",
-      "nodeId": "0:65",
+      "message": "Subpixel values: y: 10.5",
+      "nodeId": "0:68",
       "nodeName": "Frame",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Frame",
@@ -2530,20 +2732,18 @@
       ],
       "suggest": "Round to whole pixels for crisp rendering",
       "data": {
-        "y": 7.5
+        "y": 10.5
       }
     },
     {
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:66",
+      "nodeId": "0:69",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Frame",
@@ -2558,13 +2758,11 @@
       "ruleId": "text-style-required",
       "severity": "info",
       "message": "Text layer without typography variable bindings",
-      "nodeId": "0:66",
+      "nodeId": "0:69",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Frame",
@@ -2573,38 +2771,14 @@
       "suggest": "Bind font size or font family to a shared text token when possible"
     },
     {
-      "ruleId": "no-deeply-nested",
-      "severity": "info",
-      "message": "Layer nested 7 levels deep (max 6)",
-      "nodeId": "0:66",
-      "nodeName": "Text",
-      "nodePath": [
-        "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Frame",
-        "Text"
-      ],
-      "suggest": "Flatten structure or extract a component",
-      "data": {
-        "depth": 7,
-        "maxDepth": 6
-      }
-    },
-    {
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:67",
+      "nodeId": "0:70",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Text"
@@ -2618,13 +2792,11 @@
       "ruleId": "text-style-required",
       "severity": "info",
       "message": "Text layer without typography variable bindings",
-      "nodeId": "0:67",
+      "nodeId": "0:70",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
-        "Frame",
+        "03 Hero 图",
         "Frame",
         "Frame",
         "Text"
@@ -2635,12 +2807,263 @@
       "ruleId": "min-text-size",
       "severity": "warning",
       "message": "Text size 11px is below minimum 12px",
-      "nodeId": "0:67",
+      "nodeId": "0:70",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 11,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:71",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "consistent-spacing",
+      "severity": "info",
+      "message": "paddingTop 14px is not in spacing scale",
+      "nodeId": "0:71",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a spacing token or a multiple of 4px",
+      "data": {
+        "property": "paddingTop",
+        "value": 14,
+        "base": 4
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "paddingTop": 16
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "consistent-spacing",
+      "severity": "info",
+      "message": "paddingRight 14px is not in spacing scale",
+      "nodeId": "0:71",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a spacing token or a multiple of 4px",
+      "data": {
+        "property": "paddingRight",
+        "value": 14,
+        "base": 4
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "paddingRight": 16
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "consistent-spacing",
+      "severity": "info",
+      "message": "paddingBottom 14px is not in spacing scale",
+      "nodeId": "0:71",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a spacing token or a multiple of 4px",
+      "data": {
+        "property": "paddingBottom",
+        "value": 14,
+        "base": 4
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "paddingBottom": 16
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "consistent-spacing",
+      "severity": "info",
+      "message": "paddingLeft 14px is not in spacing scale",
+      "nodeId": "0:71",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a spacing token or a multiple of 4px",
+      "data": {
+        "property": "paddingLeft",
+        "value": 14,
+        "base": 4
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "paddingLeft": 16
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "consistent-radius",
+      "severity": "info",
+      "message": "Corner radius 10px is not in scale",
+      "nodeId": "0:71",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a radius token or a scale value",
+      "data": {
+        "radius": 10
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "cornerRadius": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:72",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "consistent-spacing",
+      "severity": "info",
+      "message": "gap 6px is not in spacing scale",
+      "nodeId": "0:72",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a spacing token or a multiple of 4px",
+      "data": {
+        "property": "itemSpacing",
+        "value": 6,
+        "base": 4
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "itemSpacing": 8
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:73",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 11px is below minimum 12px",
+      "nodeId": "0:73",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
         "Frame",
         "Frame",
         "Frame",
@@ -2664,12 +3087,13 @@
       "ruleId": "no-default-names",
       "severity": "info",
       "message": "Default layer name \"Text\" is not descriptive",
-      "nodeId": "0:68",
+      "nodeId": "0:74",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
         "Frame",
         "Frame",
         "Text"
@@ -2683,20 +3107,565 @@
       "ruleId": "text-style-required",
       "severity": "info",
       "message": "Text layer without typography variable bindings",
-      "nodeId": "0:68",
+      "nodeId": "0:74",
       "nodeName": "Text",
       "nodePath": [
         "Page 1",
-        "02 架构图 Architecture",
-        "Diagram",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
         "Frame",
         "Frame",
         "Text"
       ],
       "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 11px is below minimum 12px",
+      "nodeId": "0:74",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 11,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:75",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:75",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 11px is below minimum 12px",
+      "nodeId": "0:75",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 11,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:76",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:77",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "consistent-spacing",
+      "severity": "info",
+      "message": "gap 6px is not in spacing scale",
+      "nodeId": "0:77",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Use a spacing token or a multiple of 4px",
+      "data": {
+        "property": "itemSpacing",
+        "value": 6,
+        "base": 4
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "itemSpacing": 8
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:78",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 10px is below minimum 12px",
+      "nodeId": "0:78",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 10,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "pixel-perfect",
+      "severity": "info",
+      "message": "Subpixel values: y: 1.5",
+      "nodeId": "0:78",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Round to whole pixels for crisp rendering",
+      "data": {
+        "y": 1.5
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:79",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:79",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:80",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:80",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 11px is below minimum 12px",
+      "nodeId": "0:80",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 11,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:81",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:82",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:83",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:83",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 11px is below minimum 12px",
+      "nodeId": "0:83",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 11,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:84",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "pixel-perfect",
+      "severity": "info",
+      "message": "Subpixel values: y: 2.5",
+      "nodeId": "0:84",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Round to whole pixels for crisp rendering",
+      "data": {
+        "y": 2.5
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:85",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Text\" is not descriptive",
+      "nodeId": "0:86",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Text"
+      }
+    },
+    {
+      "ruleId": "text-style-required",
+      "severity": "info",
+      "message": "Text layer without typography variable bindings",
+      "nodeId": "0:86",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Bind font size or font family to a shared text token when possible"
+    },
+    {
+      "ruleId": "min-text-size",
+      "severity": "warning",
+      "message": "Text size 9px is below minimum 12px",
+      "nodeId": "0:86",
+      "nodeName": "Text",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Text"
+      ],
+      "suggest": "Increase to at least 12px for readability",
+      "data": {
+        "fontSize": 9,
+        "minSize": 12
+      },
+      "suggestions": [
+        {
+          "kind": "set",
+          "changes": {
+            "fontSize": 12
+          }
+        }
+      ]
+    },
+    {
+      "ruleId": "no-default-names",
+      "severity": "info",
+      "message": "Default layer name \"Frame\" is not descriptive",
+      "nodeId": "0:87",
+      "nodeName": "Frame",
+      "nodePath": [
+        "Page 1",
+        "03 Hero 图",
+        "Frame",
+        "Frame",
+        "Frame"
+      ],
+      "suggest": "Rename to describe the layer purpose",
+      "data": {
+        "name": "Frame"
+      }
     }
   ],
   "errorCount": 0,
-  "warningCount": 9,
-  "infoCount": 124
+  "warningCount": 26,
+  "infoCount": 148
 }

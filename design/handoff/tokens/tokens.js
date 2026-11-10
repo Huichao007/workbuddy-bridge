@@ -15,9 +15,23 @@ module.exports = {
     "brandSoft": "#5E6AD2",
     "brandDim": "#16172B",
     "brandInk": "#A8A8FF",
+    "brandDeep": "#4B4BD8",
+    "borderStrong": "#5E6570",
     "ok": "#27A644",
     "warn": "#F5A623",
     "onBrand": "#FFFFFF",
-    "onSolid": "#08090A"
+    "onSolid": "#08090A",
+    "semanticTextPrimary": "var(--color-text-1)",
+    "semanticTextSecondary": "var(--color-text-2)",
+    "semanticTextTertiary": "var(--color-text-3)",
+    "semanticTextLink": "var(--color-brand-ink)",
+    "semanticTextOnAction": "var(--color-on-brand)",
+    "semanticSurfacePage": "var(--color-bg)",
+    "semanticSurfaceCard": "var(--color-surface)",
+    "semanticSurfaceRaised": "var(--color-surface-2)",
+    "semanticActionPrimary": "var(--color-brand-deep)",
+    "semanticBorderDefault": "var(--color-line)",
+    "semanticBorderStrong": "var(--color-border-strong)",
+    "semanticBorderFocus": "var(--color-brand-ink)"
   }
 };
