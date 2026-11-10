@@ -11,7 +11,7 @@
 
 > **先看这张图就懂了** → [介绍页](https://huichao007.github.io/workbuddy-bridge/)（一份积分怎么同时喂两个客户端）
 
-<img src="docs/site/design/handoff/screens/02-architecture.png" alt="架构图：WorkBuddy 桌面端积分池经本机回环桥接，分别供 OpenCode 与 Codex CLI 使用" width="100%">
+<img src="docs/assets/02-architecture.png" alt="架构图：WorkBuddy 桌面端积分池经本机回环桥接，分别供 OpenCode 与 Codex CLI 使用" width="100%">
 
 ---
 
